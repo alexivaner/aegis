@@ -1,0 +1,38 @@
+export const pipeline = [
+  ['event_ingestion', 'Ingest event', 'Validate the synthetic application event.'],
+  ['context_assembly', 'Collect telemetry context', 'Read synthetic CPU, battery, memory and network inputs; hardware counters remain unavailable.'],
+  ['context_retrieval', 'Retrieve context', 'Select at most three recent events of the same kind.'],
+  ['agent_planning', 'Plan execution', 'Decide whether inference is necessary.'],
+  ['backend_selection', 'Policy → scheduler', 'Policy admits feasible candidates; the scheduler places this workload among them.'],
+  ['model_execution', 'Execute backend', 'Run the admitted provider through InferenceProvider, with bounded fallback.'],
+  ['output_validation', 'Validate output', 'Reject unsupported actions and malformed schemas.'],
+  ['policy_enforcement', 'Enforce policy', 'Keep model proposals subordinate to product rules.'],
+  ['notification_dispatch', 'Deliver or defer', 'Dispatch only a validated decision to a simulation.'],
+  ['telemetry_recording', 'Record telemetry', 'Capture measured stages and the final decision.'],
+] as const;
+
+export const architecture = [
+  { id: 'events', label: 'Task + conditions', kind: 'INPUT', port: 'DeviceContext / WorkloadConstraints', summary: 'A scenario supplies a device snapshot, privacy permission and task requirements.', detail: 'Inputs are fictional, not readings from your computer. The lab accepts only bounded condition fields; no document, prompt or credentials are needed.', file: 'http.py / RouteInput' },
+  { id: 'http', label: 'Routing API', kind: 'INCOMING ADAPTER', port: 'POST /api/aegis/route', summary: 'Validate the selected conditions and ask the application for a route.', detail: 'The browser calls the loopback Python service. Without it, only precomputed Python scenarios are available; JavaScript does not replace the policy.', file: 'http.py' },
+  { id: 'core', label: 'Routing workflow', kind: 'APPLICATION + DOMAIN', port: 'PolicyEngine / WorkloadScheduler', summary: 'Read conditions, admit eligible models, then choose an allowed backend.', detail: 'The policy and scheduler are separate responsibilities. No inference is executed by the routing endpoint. Retained reference workflows demonstrate model execution and validation separately.', file: 'domain.py / http.py' },
+  { id: 'ports', label: 'Application contracts', kind: 'CORE-OWNED BOUNDARIES', port: 'PolicyEngine / WorkloadScheduler / InferenceProvider', summary: 'Contracts keep model providers and infrastructure replaceable.', detail: 'The domain imports no web framework or model SDK. Concrete adapters implement application-owned interfaces. The model-call boundary is illustrated but not invoked by the routing lab.', file: 'ports.py' },
+  { id: 'policy', label: 'Policy engine', kind: 'ADMISSION POLICY', port: 'PolicyEngine', summary: 'Decide which models may be used and explain each rejection.', detail: 'Check cloud permission, backend availability, required capability, network, memory, battery, CPU and estimated latency. Admission does not choose a preferred model.', file: 'adapters.py / evaluate_workload_policy' },
+  { id: 'scheduler', label: 'Backend placement', kind: 'SCHEDULER', port: 'WorkloadScheduler', summary: 'Apply the selected local/cloud preference among the models admitted by policy.', detail: 'Local-first is the default; cloud-first is selectable. Preference never overrides eligibility. If no model passes the policy, return no selection. This is single-task placement, not queue ordering, hardware preemption or an optimal cost/energy scheduler.', file: 'adapters.py / select_backend' },
+  { id: 'inference', label: 'Execution backend', kind: 'REPLACEABLE PROVIDERS', port: 'InferenceProvider', summary: 'The selected backend would call a local or cloud model behind the same contract.', detail: 'The scenario lab stops before the model call. The retained runtime has simulated inference and configured Ollama/cloud adapters; tests isolate their network contracts. No actual model benchmark is claimed.', file: 'adapters.py' },
+  { id: 'telemetry', label: 'Device conditions', kind: 'TELEMETRY', port: 'DeviceContext', summary: 'Supply the memory, battery, processor load and network conditions used by the decision.', detail: 'The lab uses fictional input values and estimated model requirements. Reading real hardware counters, measuring energy and automatic feedback tuning remain future work.', file: 'domain.py / DeviceContext' },
+] as const;
+
+export const decisions = [
+  { title: 'Check permission before preference', choice: 'Reject cloud when processing must stay local, even if the local model cannot run.', tradeoff: 'The task may be blocked. A fallback is useful only when it respects the same permission boundary.' },
+  { title: 'Separate policy from scheduling', choice: 'Policy returns eligible candidates and rejection reasons. The scheduler selects only from that admitted set.', tradeoff: 'More explicit contracts, but every choice can be traced back to its conditions.' },
+  { title: 'Prefer a simple reference strategy', choice: 'Default to local-first, with an adjustable cloud-first preference. Select only among models that pass every policy check.', tradeoff: 'Understandable and testable, but not an optimizer for cost, energy or model quality.' },
+  { title: 'Keep model calls replaceable', choice: 'Use application-owned interfaces for inference, policy and placement.', tradeoff: 'Adapters add maintenance. Introduce boundaries for real dependencies, not every function.' },
+  { title: 'Keep examples truthful offline', choice: 'Serve recorded Python decisions when the local API is absent. Disable arbitrary condition edits until Python is available.', tradeoff: 'Offline visitors explore presets rather than a second policy implementation in JavaScript.' },
+] as const;
+
+export const runtimeConcepts = [
+  { id: 'telemetry', title: 'Telemetry', role: 'Observe the conditions', contract: 'ResourceMonitor + TelemetrySink + Clock', description: 'Input telemetry supplies the resource snapshot. Outcome telemetry records actual Python stage timings, retries, errors and returned tokens.', limitation: 'CPU, memory, battery and network inputs are synthetic. GPU/NPU, thermals and power counters are unavailable.' },
+  { id: 'policy', title: 'Policy engine', role: 'Define what is allowed', contract: 'PolicyEngine → PolicyEvaluation', description: 'Enforce privacy permission first, then candidate compatibility, availability, resource budgets and estimated latency. Return eligibility and reasons; do not select or execute a model.', limitation: 'Notification action policy runs again after response validation. Latency is a feasibility estimate, not a hard deadline guarantee.' },
+  { id: 'scheduler', title: 'Scheduler', role: 'Place an admitted workload', contract: 'WorkloadScheduler → RoutingDecision', description: 'Choose among policy-admitted candidates using the explicit local → cloud → mock preference, or return inability when no candidate is eligible.', limitation: 'Implemented: single-workload placement. Not implemented: real-time priority queues, aging, dynamic batching or throttling.' },
+  { id: 'inference', title: 'Execution backend', role: 'Run the selected provider', contract: 'InferenceProvider → InferenceResult', description: 'Run deterministic mock or configured Ollama/cloud inference. Validate output, bound provider attempts, and expose any fallback in the trace.', limitation: 'Mock runs by default. Ollama controls its actual CPU/GPU placement; Aegis does not directly select a CPU/GPU/NPU execution provider.' },
+] as const;

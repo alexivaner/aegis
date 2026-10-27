@@ -1,0 +1,25 @@
+{
+  "name": "aegis",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.23.4"
+  },
+  "scripts": {
+    "dev": "node scripts/astro.mjs dev --host 127.0.0.1",
+    "build": "node scripts/astro.mjs check && node scripts/astro.mjs build && node scripts/check-output.mjs",
+    "preview": "node scripts/astro.mjs preview --host 127.0.0.1",
+    "check": "node scripts/astro.mjs check",
+    "test": "node --test tests/*.test.mjs",
+    "runtime": "uv run --project ai-runtime uvicorn aegis.http:app --host 127.0.0.1 --port 8011",
+    "aegis:validate": "uv run --project ai-runtime pytest ai-runtime/tests -q --junitxml=ai-runtime/reports/pytest.xml && uv run --project ai-runtime ruff check ai-runtime/src ai-runtime/tests ai-runtime/export_demo.py && uv run --project ai-runtime mypy --config-file ai-runtime/pyproject.toml ai-runtime/src/aegis",
+    "aegis:export": "uv run --project ai-runtime python ai-runtime/export_demo.py"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.12",
+    "@types/node": "24.19.2",
+    "astro": "7.4.2",
+    "typescript": "6.0.3"
+  }
+}

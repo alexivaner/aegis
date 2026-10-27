@@ -1,0 +1,893 @@
+{
+  "generated_at": "2026-10-27T09:25:27.193245+00:00",
+  "python": "3.12.12",
+  "tests": [
+    {
+      "name": "test_extracts_evidence_for_each_sample[sample0]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_extracts_evidence_for_each_sample[sample1]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_extracts_evidence_for_each_sample[sample2]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_task_owner_deadline_and_missing_deadline_are_literal",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_editing_notes_changes_result_without_fabricating_unsupported_commitments",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_untrusted_output_cannot_invent_evidence_or_metadata[source]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_untrusted_output_cannot_invent_evidence_or_metadata[quote]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_untrusted_output_cannot_invent_evidence_or_metadata[owner]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_untrusted_output_cannot_invent_evidence_or_metadata[due]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_untrusted_output_cannot_invent_evidence_or_metadata[extra]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_bounded_input[short]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_bounded_input[xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_bounded_input[line with a sufficiently long input\\nline with a sufficiently long input\\nline with a sufficiently long input\\nline with a sufficiently long input\\nline with a sufficiently long input\\nline with a sufficiently long input\\nline with a sufficiently long input\\nline with a sufficiently long input\\nline with a sufficiently long input\\nline with a sufficiently long input\\nline with a sufficiently long input\\nline with a sufficiently long input\\nline with a sufficiently long input\\nline with a sufficiently long input\\nline with a sufficiently long input\\nline with a sufficiently long input\\nline with a sufficiently long input\\nline with a sufficiently long input\\nline with a sufficiently long input\\nline with a sufficiently long input\\nline with a sufficiently long input\\n]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_bounded_input[AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_plan_respects_privacy_network_and_available_models[options0-local]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_plan_respects_privacy_network_and_available_models[options1-None]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_plan_respects_privacy_network_and_available_models[options2-cloud]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_plan_respects_privacy_network_and_available_models[options3-local]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_plan_respects_privacy_network_and_available_models[options4-None]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_plan_respects_privacy_network_and_available_models[options5-None]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_timeout_fallback_cannot_bypass_privacy",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.047
+    },
+    {
+      "name": "test_invalid_evidence_is_not_retried_as_a_transient_error",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_blocked_result_has_no_fabricated_document",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_learning_cloud_path_never_calls_network",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_real_model_adapter_contract_with_isolated_http_fixture[provider0]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_real_model_adapter_contract_with_isolated_http_fixture[provider1]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_foreground_request_precedes_background_and_background_really_indexes",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_aging_gives_background_a_turn_under_continuous_interactive_requests",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_queue_capacity_cancellation_and_session_expiry",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_meeting_api_contract_and_input_validation",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.012
+    },
+    {
+      "name": "test_learning_experiments_have_expected_outcomes[experiment0]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_learning_experiments_have_expected_outcomes[experiment1]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_learning_experiments_have_expected_outcomes[experiment2]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_learning_experiments_have_expected_outcomes[experiment3]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_learning_experiments_have_expected_outcomes[experiment4]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_learning_experiments_have_expected_outcomes[experiment5]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.025
+    },
+    {
+      "name": "test_idle_workspace_really_expires_on_access",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_empty_model_document_is_not_accepted_as_success",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_fault_injection_does_not_call_an_actual_model[timeout]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.021
+    },
+    {
+      "name": "test_fault_injection_does_not_call_an_actual_model[invalid_output]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_synthetic_evaluation_outcomes[battery]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_synthetic_evaluation_outcomes[cpu]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_synthetic_evaluation_outcomes[update]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_synthetic_evaluation_outcomes[network]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_synthetic_evaluation_outcomes[timeout]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.026
+    },
+    {
+      "name": "test_synthetic_evaluation_outcomes[urgent]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_routing_matrix[8-40-65-online-local_only-light-False-local]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_routing_matrix[2-40-65-online-local_only-light-False-None]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_routing_matrix[2-40-65-online-public-light-False-cloud]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_routing_matrix[2-40-65-offline-public-light-False-None]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_routing_matrix[8-98-65-online-public-light-False-cloud]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_routing_matrix[8-40-5-online-public-light-False-cloud]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_routing_matrix[8-40-65-online-local_only-complex-False-None]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_routing_matrix[8-40-65-online-local_only-complex-True-local]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_routing_matrix[8-40-65-online-public-complex-False-cloud]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_routing_matrix[8-40-65-offline-local_only-light-False-local]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_sensitive_remote_requires_explicit_permission",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_latency_and_availability_limits",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_invalid_device_context[change0]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_invalid_device_context[change1]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_invalid_device_context[change2]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_invalid_device_context[change3]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_invalid_device_context[change4]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_structured_response_rejection[confidence-nan]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_structured_response_rejection[confidence-True]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_structured_response_rejection[confidence-1.1]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_structured_response_rejection[proposed_action-execute_shell]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_structured_response_rejection[priority-super]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_structured_response_rejection[summary-]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_structured_response_rejection[recommended_channel-email]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_structured_response_rejection[required_capabilities-value7]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_unknown_model_fields_are_rejected",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_model_cannot_override_focus_policy_or_invent_critical_priority",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_critical_event_bypasses_focus_but_not_tool_allowlist",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_context_selection_is_bounded_and_does_not_treat_text_as_instructions",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_gateway_contract_and_idempotency[MemoryNotificationGateway]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_gateway_contract_and_idempotency[SimulationNotificationGateway]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_inference_adapter_contract_without_external_network[mock]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_inference_adapter_contract_without_external_network[ollama]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_inference_adapter_contract_without_external_network[cloud]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_local_adapter_cannot_silently_be_remote",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_timeout_retries_then_falls_back_explicitly",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.026
+    },
+    {
+      "name": "test_failure_injection_applies_to_configured_local_provider_without_network[timeout-provider_timeout-1]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.021
+    },
+    {
+      "name": "test_failure_injection_applies_to_configured_local_provider_without_network[invalid_output-invalid_provider_output-0]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_invalid_output_falls_back_without_retrying_nontransient_schema_errors",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_delivery_failure_is_visible_and_not_reported_as_success",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_cancellation_blocks_dispatch",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_duplicates_suppressed_across_transports_and_conflicts_rejected",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.001
+    },
+    {
+      "name": "test_concurrent_duplicate_events_deliver_once",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.001
+    },
+    {
+      "name": "test_state_machine_rejects_skipped_or_terminal_transitions",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_inference_is_skipped_when_deterministic_policy_suffices",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_sqlite_context_repository_contract",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.009
+    },
+    {
+      "name": "test_api_validation_routing_and_background_contract",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.011
+    },
+    {
+      "name": "test_domain_has_no_framework_or_infrastructure_imports",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.002
+    },
+    {
+      "name": "test_policy_engine_reports_all_eligible_candidates_without_placing_workload",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_scheduler_places_only_policy_admitted_candidates",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_scheduler_rejects_contradictory_or_unknown_admission_ids",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_trace_exposes_policy_admission_before_backend_execution",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.0
+    },
+    {
+      "name": "test_routing_api_returns_distinct_policy_and_scheduler_outcomes",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.007
+    },
+    {
+      "name": "test_scheduler_preference_only_applies_after_policy[changes0-cloud]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.006
+    },
+    {
+      "name": "test_scheduler_preference_only_applies_after_policy[changes1-local]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.008
+    },
+    {
+      "name": "test_scheduler_preference_only_applies_after_policy[changes2-None]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.007
+    },
+    {
+      "name": "test_scheduler_preference_only_applies_after_policy[changes3-local]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.006
+    },
+    {
+      "name": "test_scheduler_preference_only_applies_after_policy[changes4-local]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.004
+    },
+    {
+      "name": "test_scheduler_preference_only_applies_after_policy[changes5-None]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.003
+    },
+    {
+      "name": "test_scheduler_preference_only_applies_after_policy[changes6-None]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.004
+    },
+    {
+      "name": "test_scheduler_preference_only_applies_after_policy[changes7-cloud]",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.004
+    },
+    {
+      "name": "test_unknown_scheduler_preference_is_rejected",
+      "passed": true,
+      "skipped": false,
+      "duration_seconds": 0.003
+    }
+  ],
+  "passed": 108,
+  "failed": 0,
+  "evaluation": [
+    {
+      "scenario": "battery",
+      "expected": "notify",
+      "actual": "notify",
+      "passed": true,
+      "latency_ms": 0.1665
+    },
+    {
+      "scenario": "cpu",
+      "expected": "notify",
+      "actual": "notify",
+      "passed": true,
+      "latency_ms": 0.034
+    },
+    {
+      "scenario": "update",
+      "expected": "defer",
+      "actual": "defer",
+      "passed": true,
+      "latency_ms": 0.0263
+    },
+    {
+      "scenario": "network",
+      "expected": "notify",
+      "actual": "notify",
+      "passed": true,
+      "latency_ms": 0.0694
+    },
+    {
+      "scenario": "timeout",
+      "expected": "notify",
+      "actual": "notify",
+      "passed": true,
+      "latency_ms": 25.0961
+    },
+    {
+      "scenario": "urgent",
+      "expected": "notify",
+      "actual": "notify",
+      "passed": true,
+      "latency_ms": 0.0434
+    }
+  ],
+  "evaluation_passed": 6,
+  "mock_median_latency_ms": 0.056400000000000006,
+  "meeting_evaluation": [
+    {
+      "sample": "Design review",
+      "experiment": "1. Follow the evidence",
+      "expected_state": "complete",
+      "actual_state": "complete",
+      "expected_actions": 2,
+      "actual_actions": 2,
+      "passed": true,
+      "latency_ms": 0.2241
+    },
+    {
+      "sample": "Design review",
+      "experiment": "2. Permit the cloud",
+      "expected_state": "complete",
+      "actual_state": "complete",
+      "expected_actions": 2,
+      "actual_actions": 2,
+      "passed": true,
+      "latency_ms": 0.0492
+    },
+    {
+      "sample": "Design review",
+      "experiment": "3. Work offline",
+      "expected_state": "complete",
+      "actual_state": "complete",
+      "expected_actions": 2,
+      "actual_actions": 2,
+      "passed": true,
+      "latency_ms": 0.0444
+    },
+    {
+      "sample": "Design review",
+      "experiment": "4. Protect private notes",
+      "expected_state": "blocked",
+      "actual_state": "blocked",
+      "expected_actions": 0,
+      "actual_actions": 0,
+      "passed": true,
+      "latency_ms": 0.0217
+    },
+    {
+      "sample": "Design review",
+      "experiment": "5. Give the meeting priority",
+      "expected_state": "complete",
+      "actual_state": "complete",
+      "expected_actions": 2,
+      "actual_actions": 2,
+      "passed": true,
+      "latency_ms": 0.0425
+    },
+    {
+      "sample": "Design review",
+      "experiment": "6. Recover from failure",
+      "expected_state": "complete",
+      "actual_state": "complete",
+      "expected_actions": 2,
+      "actual_actions": 2,
+      "passed": true,
+      "latency_ms": 25.1655
+    },
+    {
+      "sample": "Weekly planning",
+      "experiment": "1. Follow the evidence",
+      "expected_state": "complete",
+      "actual_state": "complete",
+      "expected_actions": 2,
+      "actual_actions": 2,
+      "passed": true,
+      "latency_ms": 0.2902
+    },
+    {
+      "sample": "Weekly planning",
+      "experiment": "2. Permit the cloud",
+      "expected_state": "complete",
+      "actual_state": "complete",
+      "expected_actions": 2,
+      "actual_actions": 2,
+      "passed": true,
+      "latency_ms": 0.1061
+    },
+    {
+      "sample": "Weekly planning",
+      "experiment": "3. Work offline",
+      "expected_state": "complete",
+      "actual_state": "complete",
+      "expected_actions": 2,
+      "actual_actions": 2,
+      "passed": true,
+      "latency_ms": 0.099
+    },
+    {
+      "sample": "Weekly planning",
+      "experiment": "4. Protect private notes",
+      "expected_state": "blocked",
+      "actual_state": "blocked",
+      "expected_actions": 0,
+      "actual_actions": 0,
+      "passed": true,
+      "latency_ms": 0.0492
+    },
+    {
+      "sample": "Weekly planning",
+      "experiment": "5. Give the meeting priority",
+      "expected_state": "complete",
+      "actual_state": "complete",
+      "expected_actions": 2,
+      "actual_actions": 2,
+      "passed": true,
+      "latency_ms": 0.0983
+    },
+    {
+      "sample": "Weekly planning",
+      "experiment": "6. Recover from failure",
+      "expected_state": "complete",
+      "actual_state": "complete",
+      "expected_actions": 2,
+      "actual_actions": 2,
+      "passed": true,
+      "latency_ms": 23.9523
+    },
+    {
+      "sample": "Missing deadline",
+      "experiment": "1. Follow the evidence",
+      "expected_state": "complete",
+      "actual_state": "complete",
+      "expected_actions": 1,
+      "actual_actions": 1,
+      "passed": true,
+      "latency_ms": 0.25
+    },
+    {
+      "sample": "Missing deadline",
+      "experiment": "2. Permit the cloud",
+      "expected_state": "complete",
+      "actual_state": "complete",
+      "expected_actions": 1,
+      "actual_actions": 1,
+      "passed": true,
+      "latency_ms": 0.2147
+    },
+    {
+      "sample": "Missing deadline",
+      "experiment": "3. Work offline",
+      "expected_state": "complete",
+      "actual_state": "complete",
+      "expected_actions": 1,
+      "actual_actions": 1,
+      "passed": true,
+      "latency_ms": 0.1948
+    },
+    {
+      "sample": "Missing deadline",
+      "experiment": "4. Protect private notes",
+      "expected_state": "blocked",
+      "actual_state": "blocked",
+      "expected_actions": 0,
+      "actual_actions": 0,
+      "passed": true,
+      "latency_ms": 0.2162
+    },
+    {
+      "sample": "Missing deadline",
+      "experiment": "5. Give the meeting priority",
+      "expected_state": "complete",
+      "actual_state": "complete",
+      "expected_actions": 1,
+      "actual_actions": 1,
+      "passed": true,
+      "latency_ms": 0.1073
+    },
+    {
+      "sample": "Missing deadline",
+      "experiment": "6. Recover from failure",
+      "expected_state": "complete",
+      "actual_state": "complete",
+      "expected_actions": 1,
+      "actual_actions": 1,
+      "passed": true,
+      "latency_ms": 22.8635
+    }
+  ],
+  "meeting_passed": 18,
+  "meeting_median_latency_ms": 0.15105000000000002,
+  "limitations": [
+    "Small synthetic dataset; no production quality or hardware benchmark.",
+    "Latency includes actual Python mock execution, not real LLM inference.",
+    "Local/cloud adapters have network-isolated contract tests; real LLMs were not evaluated.",
+    "No GPU, NPU, energy, or token measurements are fabricated.",
+    "No claim of optimal scheduling or distributed exactly-once delivery."
+  ]
+}

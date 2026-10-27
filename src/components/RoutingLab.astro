@@ -1,0 +1,67 @@
+---
+import fixtures from '../../public/aegis-data/fixtures.json';
+import { scenarioStories, explainRoute, routeFacts, routeSteps, type RoutePreset } from '../lib/routing-view';
+const presets = fixtures.routing_presets as RoutePreset[];
+const first = explainRoute(presets[0].result);
+const steps = routeSteps(presets[0].input, presets[0].result);
+const resources = [
+  { key: 'memory', label: 'Free memory', value: 8, max: 64, step: .5, unit: 'GB', help: 'Local needs at least 4 GB in this example.' },
+  { key: 'battery', label: 'Battery', value: 65, max: 100, step: 1, unit: '%', help: 'Local pauses below the 10% battery reserve.' },
+  { key: 'cpu', label: 'CPU in use', value: 40, max: 100, step: 1, unit: '%', help: 'At 95% or more, local has no CPU budget left.' },
+];
+---
+<section class="ag-section rl" id="routing-lab" aria-labelledby="routing-heading" data-routing-lab>
+  <span id="meeting-lab" class="rl-anchor" aria-hidden="true"></span><span id="execution" class="rl-anchor" aria-hidden="true"></span>
+  <div class="ag-section-heading"><div><p class="ag-eyebrow">THE DEMO / ONE QUESTION</p><h2 id="routing-heading">Where should this AI task run?</h2></div><span class="rl-status" data-route-status>Recorded Python decisions</span></div>
+  <p class="ag-section-lead">Start with a scenario, then adjust the conditions. Follow the four roles beside the decision to see what each change does.</p>
+  <div class="rl-presets" role="group" aria-label="Choose a scenario">{scenarioStories.map((story,index)=><button type="button" data-preset={index} aria-pressed={index===0}><span>0{index+1}</span>{story.title}</button>)}</div>
+  <div class="rl-change-note" aria-live="polite" data-change-summary>Scenario loaded. Each control belongs to a role below; every change updates the four-step explanation.</div>
+  <div class="rl-workspace">
+    <div class="rl-input" id="route-controls"><a class="rl-mobile-jump" href="#route-result">See the decision & four steps ↑</a>
+      <p class="ag-eyebrow">SCENARIO INPUT / ADJUST THE EXAMPLE</p><h3 data-scenario-title>{scenarioStories[0].title}</h3>
+      <p class="rl-story" data-scenario-story>{scenarioStories[0].story}</p>
+      <div class="rl-facts" data-route-facts>{routeFacts(presets[0].input).map(fact=><span>{fact}</span>)}</div>
+      <fieldset class="rl-control-group" data-control-owner="0"><legend><span>01</span> Telemetry</legend>
+        <p class="rl-group-help">Supply the device conditions. The policy engine checks these values.</p>
+        <div class="rl-control-grid">
+          {resources.map(resource=><label class="rl-range" for={`route-${resource.key}`}>{resource.label}<output for={`route-${resource.key}`} data-control-value={resource.key}>{resource.value}{resource.unit==='%'?'%':' GB'}</output><input id={`route-${resource.key}`} type="range" min="0" max={resource.max} step={resource.step} value={resource.value} data-route-field={resource.key} data-owner="0" aria-describedby={`help-${resource.key}`} /><small id={`help-${resource.key}`}>{resource.help}</small></label>)}
+          <label class="rl-select" for="route-network">Network quality<select id="route-network" data-route-field="network" data-owner="0" aria-describedby="help-network"><option value="online">Online</option><option value="unstable">Unstable</option><option value="offline">Offline</option></select><small id="help-network">Cloud needs a connection. Unstable internet needs a larger wait budget.</small></label>
+        </div>
+        <a class="rl-mobile-jump" href="#route-result">See the updated decision ↑</a>
+      </fieldset>
+      <fieldset class="rl-control-group" data-control-owner="1"><legend><span>02</span> Policy engine</legend>
+        <p class="rl-group-help">Set the requirements every model must pass.</p>
+        <label class="rl-check"><input type="checkbox" data-route-field="privacy" data-owner="1" aria-describedby="help-privacy" /> Permit cloud processing</label><p class="rl-control-help" id="help-privacy">Off means the task must stay on-device, even when local cannot run.</p>
+        <div class="rl-control-grid"><label class="rl-select" for="route-complexity">Task type<select id="route-complexity" data-route-field="complexity" data-owner="1"><option value="light">Basic task</option><option value="complex">Needs reasoning</option></select><small>A reasoning task needs a model with that capability.</small></label>
+          <label class="rl-range" for="route-latency">Allowed wait<output for="route-latency" data-control-value="latency">1800 ms</output><input id="route-latency" type="range" min="50" max="5000" step="50" value="1800" data-route-field="latency" data-owner="1" aria-describedby="help-latency" /><small id="help-latency">Example estimates: local 1200 ms; cloud 1600 ms. This is a budget, not a measured response time.</small></label></div>
+        <a class="rl-mobile-jump" href="#route-result">See the updated decision ↑</a>
+      </fieldset>
+      <fieldset class="rl-control-group" data-control-owner="2"><legend><span>03</span> Scheduler</legend>
+        <p class="rl-group-help">Choose a preference among routes the policy allows.</p>
+        <label class="rl-select" for="route-preference">When both routes work<select id="route-preference" data-route-field="preferred_backend" data-owner="2" aria-describedby="help-preference"><option value="local">Prefer local</option><option value="cloud">Prefer cloud</option></select><small id="help-preference">A preference never overrides privacy, connectivity, resources or capability.</small></label>
+        <a class="rl-mobile-jump" href="#route-result">See the updated decision ↑</a>
+      </fieldset>
+      <fieldset class="rl-control-group" data-control-owner="3"><legend><span>04</span> Execution backend</legend>
+        <p class="rl-group-help">Describe the model adapters available to the policy. Execution itself remains a preview.</p>
+        <label class="rl-check"><input type="checkbox" data-route-field="local_available" data-owner="3" checked /> Local model available</label>
+        <label class="rl-check"><input type="checkbox" data-route-field="cloud_available" data-owner="3" checked /> Cloud model available</label>
+        <label class="rl-check"><input type="checkbox" data-route-field="local_reasoning" data-owner="3" /> Local model can reason</label>
+        <p class="rl-control-help">The example cloud model supports reasoning. Both model profiles and all device readings are fictional.</p>
+        <a class="rl-mobile-jump" href="#route-result">See the updated decision ↑</a>
+      </fieldset>
+      <p class="rl-hint" data-scenario-try>{scenarioStories[0].try}</p><button type="button" class="rl-reset" data-route-reset>Reset this scenario ↺</button>
+    </div>
+    <div class="rl-output" id="route-result" data-route-output data-backend="local">
+      <a class="rl-mobile-jump" href="#route-controls">Adjust the conditions ↓</a><div class="rl-verdict" aria-live="polite" aria-atomic="true"><p class="ag-eyebrow">ROUTING OUTPUT / SCHEDULER DECISION</p><h3 data-route-title>{first.title}</h3><p class="rl-explanation" data-route-explanation>{first.explanation}</p></div>
+      <div class="rl-paths">{['local','cloud'].map(kind=><article class="rl-path" data-path={kind} data-selected={kind==='local'}><svg viewBox="0 0 64 48" aria-hidden="true">{kind==='local'?<><rect x="12" y="4" width="40" height="30" rx="3"/><path d="M5 41h54M26 34v7m12-7v7"/></>:<path d="M16 39h33c16 0 14-23 2-25C48-3 22-3 18 16 0 13-1 39 16 39Z"/>}</svg><div><h4>{kind==='local'?'Local':'Cloud'}</h4><span>{kind==='local'?'On your device':'On a remote server'}</span></div><strong data-path-state={kind}>{kind==='local'?'Selected by scheduler':'Rejected by policy'}</strong><ul data-path-reasons={kind}>{(kind==='local'?['This model meets the task requirements.']:first.cloud).map(reason=><li>{reason}</li>)}</ul></article>)}</div>
+      <section class="rl-learning" id="runtime-model" aria-labelledby="roles-heading"><h3 id="roles-heading">Follow every step</h3><p>All four roles update after each adjustment. Select a step to find its controls.</p>
+        <ol class="rl-steps" data-role-steps>{steps.map((step,index)=><li data-step={index} data-state="ready"><button type="button" class="rl-step-heading" data-role={index} aria-pressed="false" aria-label={`Adjust ${step.title} controls`}><span class="rl-step-number">0{index+1}</span><span><strong>{step.title}</strong><small>{step.question}</small></span><span class="rl-step-status" data-step-status={index}>{step.status}</span></button><dl><div><dt>Input</dt><dd data-step-input={index}>{step.input}</dd></div><div><dt>Output</dt><dd data-step-output={index}>{step.output}</dd></div></dl></li>)}</ol>
+      </section>
+      <p class="rl-execution" data-route-execution>The local execution backend would run the task. This demo stops before the model call.</p>
+      <p class="rl-provenance" data-route-provenance>Recorded result from Python · Fictional conditions · No model call or document is sent.</p><p class="rl-request-error" data-route-error hidden></p>
+      <details class="rl-advanced" data-technical-decision><summary>Inspect the technical decision</summary><pre data-route-json>{JSON.stringify(presets[0].result,null,2)}</pre></details>
+    </div>
+  </div>
+  <noscript><p class="ag-small">JavaScript is disabled. The first recorded scenario and its four steps are shown above. Enable JavaScript to adjust conditions.</p><style>.rl-presets,.rl-control-group,.rl-reset{display:none}</style></noscript>
+</section>
+<script>import { initRoutingLab } from '../scripts/routing'; const root=document.querySelector<HTMLElement>('[data-routing-lab]'); if(root)void initRoutingLab(root);</script>

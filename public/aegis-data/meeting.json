@@ -1,0 +1,5097 @@
+{
+  "samples": [
+    {
+      "id": "design",
+      "title": "Design review",
+      "notes": "Maya: I'll send the design draft by Friday.\nRafi: I'll review the draft by Monday.\nTeam: We agreed to postpone the launch until the review is complete.\nMaya: The first pilot will include five volunteers."
+    },
+    {
+      "id": "week",
+      "title": "Weekly planning",
+      "notes": "Noor: I'll update the project brief by Tuesday.\nLina: I'll check the budget by Thursday.\nTeam: We decided to keep the first release small.\nNoor: The release will include search and a reading list."
+    },
+    {
+      "id": "uncertain",
+      "title": "Missing deadline",
+      "notes": "Ari: I'll prepare the comparison.\nJo: We should explore a second design before deciding.\nTeam: We agreed to keep both options open.\nAri: The comparison needs feedback from two reviewers."
+    }
+  ],
+  "experiments": [
+    {
+      "id": "baseline",
+      "title": "1. Follow the evidence",
+      "goal": "Run the notes, then select an action to highlight its source.",
+      "options": {}
+    },
+    {
+      "id": "cloud",
+      "title": "2. Permit the cloud",
+      "goal": "Disable the local candidate and permit cloud processing. Observe the permitted route.",
+      "options": {
+        "private": false,
+        "local_available": false
+      }
+    },
+    {
+      "id": "offline",
+      "title": "3. Work offline",
+      "goal": "The network is unavailable. See why the local candidate can still be selected.",
+      "options": {
+        "network": "offline"
+      }
+    },
+    {
+      "id": "blocked",
+      "title": "4. Protect private notes",
+      "goal": "No local candidate is available. Private notes must not escape to the cloud; execution is blocked.",
+      "options": {
+        "private": true,
+        "local_available": false
+      }
+    },
+    {
+      "id": "busy",
+      "title": "5. Give the meeting priority",
+      "goal": "Start background indexing, then request a summary. Inspect the queue's decision.",
+      "options": {
+        "busy": true
+      }
+    },
+    {
+      "id": "fallback",
+      "title": "6. Recover from failure",
+      "goal": "The first candidate times out. A cloud fallback is possible only with explicit permission.",
+      "options": {
+        "private": false,
+        "failure": "timeout"
+      }
+    }
+  ],
+  "runs": {
+    "design:baseline": {
+      "trace_id": "ae959af6-e0f5-4461-8c21-114263358660",
+      "state": "complete",
+      "sentences": [
+        {
+          "id": "s1",
+          "speaker": "Maya",
+          "text": "I'll send the design draft by Friday."
+        },
+        {
+          "id": "s2",
+          "speaker": "Rafi",
+          "text": "I'll review the draft by Monday."
+        },
+        {
+          "id": "s3",
+          "speaker": "Team",
+          "text": "We agreed to postpone the launch until the review is complete."
+        },
+        {
+          "id": "s4",
+          "speaker": "Maya",
+          "text": "The first pilot will include five volunteers."
+        }
+      ],
+      "options": {
+        "mode": "learning",
+        "private": true,
+        "network": "online",
+        "local_available": true,
+        "cloud_available": true,
+        "busy": false,
+        "failure": "none"
+      },
+      "plan": {
+        "telemetry": {
+          "battery": 65,
+          "cpu": 30,
+          "memory_utilization": 45,
+          "available_memory_gb": 8,
+          "network": "online",
+          "meeting_minutes": null,
+          "focus_mode": false
+        },
+        "policy": {
+          "eligible": [
+            "demo-local"
+          ],
+          "rejected": {
+            "demo-cloud": [
+              "Remote processing is not permitted"
+            ]
+          },
+          "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+          "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+        },
+        "placement": {
+          "selected": "demo-local",
+          "backend": "local",
+          "rationale": "Sensitive context stays local; the model satisfies the required capabilities and resource budget.",
+          "alternatives": [],
+          "rejected": {
+            "demo-cloud": [
+              "Remote processing is not permitted"
+            ]
+          },
+          "estimates_only": true,
+          "policy_evaluation": {
+            "eligible": [
+              "demo-local"
+            ],
+            "rejected": {
+              "demo-cloud": [
+                "Remote processing is not permitted"
+              ]
+            },
+            "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+            "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+          }
+        },
+        "mode": "learning",
+        "provenance": "Hypothetical resource/model profiles",
+        "privacy": "On-device only"
+      },
+      "document": {
+        "summary": [
+          {
+            "text": "I'll send the design draft by Friday.",
+            "source_ids": [
+              "s1"
+            ],
+            "evidence_quote": "I'll send the design draft by Friday."
+          },
+          {
+            "text": "I'll review the draft by Monday.",
+            "source_ids": [
+              "s2"
+            ],
+            "evidence_quote": "I'll review the draft by Monday."
+          },
+          {
+            "text": "We agreed to postpone the launch until the review is complete.",
+            "source_ids": [
+              "s3"
+            ],
+            "evidence_quote": "We agreed to postpone the launch until the review is complete."
+          }
+        ],
+        "actions": [
+          {
+            "text": "Send the design draft",
+            "source_ids": [
+              "s1"
+            ],
+            "evidence_quote": "I'll send the design draft by Friday.",
+            "owner": "Maya",
+            "due": "Friday"
+          },
+          {
+            "text": "Review the draft",
+            "source_ids": [
+              "s2"
+            ],
+            "evidence_quote": "I'll review the draft by Monday.",
+            "owner": "Rafi",
+            "due": "Monday"
+          }
+        ],
+        "decisions": [
+          {
+            "text": "We agreed to postpone the launch until the review is complete.",
+            "source_ids": [
+              "s3"
+            ],
+            "evidence_quote": "We agreed to postpone the launch until the review is complete."
+          }
+        ]
+      },
+      "trace": [
+        {
+          "id": "read",
+          "title": "Read the notes",
+          "explanation": "Accepted 4 numbered contributions. These are the evidence for the output.",
+          "data": {
+            "source_count": 4
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "telemetry",
+          "title": "Observe the conditions",
+          "explanation": "Read the supplied device/network conditions. These inputs are simulated, not readings from your laptop.",
+          "data": {
+            "battery": 65,
+            "cpu": 30,
+            "memory_utilization": 45,
+            "available_memory_gb": 8,
+            "network": "online",
+            "meeting_minutes": null,
+            "focus_mode": false
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "policy",
+          "title": "Check what is allowed",
+          "explanation": "Privacy is checked before placement. Only admitted candidates can receive the notes.",
+          "data": {
+            "eligible": [
+              "demo-local"
+            ],
+            "rejected": {
+              "demo-cloud": [
+                "Remote processing is not permitted"
+              ]
+            },
+            "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+            "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "scheduler",
+          "title": "Choose where and when",
+          "explanation": "The queue selected this interactive meeting request for its next work turn. Sensitive context stays local; the model satisfies the required capabilities and resource budget.",
+          "data": {
+            "selected": "demo-local",
+            "backend": "local",
+            "rationale": "Sensitive context stays local; the model satisfies the required capabilities and resource budget.",
+            "alternatives": [],
+            "rejected": {
+              "demo-cloud": [
+                "Remote processing is not permitted"
+              ]
+            },
+            "estimates_only": true,
+            "policy_evaluation": {
+              "eligible": [
+                "demo-local"
+              ],
+              "rejected": {
+                "demo-cloud": [
+                  "Remote processing is not permitted"
+                ]
+              },
+              "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+              "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+            }
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "execution",
+          "title": "Produce the draft",
+          "explanation": "Text rules extracted source passages and explicit commitments; no AI model or cloud request was used.",
+          "data": {
+            "actual_backend": "demo-local",
+            "execution_kind": "extractive_learning_rules",
+            "attempts": [
+              {
+                "provider": "demo-local",
+                "attempt": 1,
+                "status": "accepted",
+                "duration_ms": 0.1872
+              }
+            ]
+          },
+          "duration_ms": 0.189
+        },
+        {
+          "id": "validation",
+          "title": "Verify source references",
+          "explanation": "Checked output structure, source IDs and exact evidence quotes. Owners/deadlines must appear in the sources. These checks do not prove every AI paraphrase is correct.",
+          "data": {
+            "key_points": 3,
+            "actions": 2,
+            "decisions": 1
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "outcomes",
+          "title": "Record the outcome",
+          "explanation": "Measured Python execution time and retained this run in the bounded workspace. No hardware energy, GPU or NPU metric is claimed.",
+          "data": {
+            "elapsed_ms": 0.2241,
+            "state": "complete",
+            "sensitive_prompts_in_trace": false
+          },
+          "duration_ms": null
+        }
+      ],
+      "actual_backend": "demo-local",
+      "execution_kind": "extractive_learning_rules",
+      "error": null,
+      "attempts": [
+        {
+          "provider": "demo-local",
+          "attempt": 1,
+          "status": "accepted",
+          "duration_ms": 0.1872
+        }
+      ],
+      "elapsed_ms": 0.2241,
+      "note": "No email, task-system update, or notification is sent. This output is for review.",
+      "queue": {
+        "items": [
+          {
+            "id": "da6cc466-22bc-4096-90d9-f9b3ff1675c3",
+            "kind": "meeting",
+            "label": "Summarize this meeting",
+            "priority": 0,
+            "total": 1,
+            "done": 1,
+            "waited": 0,
+            "status": "complete"
+          }
+        ],
+        "next_order": [],
+        "events": [
+          "Added Summarize this meeting to the work queue.",
+          "Meeting request finished: complete."
+        ],
+        "indexed_words": 0,
+        "scope": "One Python worker, cooperative chunks, turn-based aging; no hardware preemption or deadline guarantee"
+      },
+      "source": "recorded_python_execution",
+      "sample_id": "design",
+      "experiment_id": "baseline"
+    },
+    "design:cloud": {
+      "trace_id": "731ac8a0-6940-4eab-b805-546338aefb8c",
+      "state": "complete",
+      "sentences": [
+        {
+          "id": "s1",
+          "speaker": "Maya",
+          "text": "I'll send the design draft by Friday."
+        },
+        {
+          "id": "s2",
+          "speaker": "Rafi",
+          "text": "I'll review the draft by Monday."
+        },
+        {
+          "id": "s3",
+          "speaker": "Team",
+          "text": "We agreed to postpone the launch until the review is complete."
+        },
+        {
+          "id": "s4",
+          "speaker": "Maya",
+          "text": "The first pilot will include five volunteers."
+        }
+      ],
+      "options": {
+        "mode": "learning",
+        "private": false,
+        "network": "online",
+        "local_available": false,
+        "cloud_available": true,
+        "busy": false,
+        "failure": "none"
+      },
+      "plan": {
+        "telemetry": {
+          "battery": 65,
+          "cpu": 30,
+          "memory_utilization": 45,
+          "available_memory_gb": 8,
+          "network": "online",
+          "meeting_minutes": null,
+          "focus_mode": false
+        },
+        "policy": {
+          "eligible": [
+            "demo-cloud"
+          ],
+          "rejected": {
+            "demo-local": [
+              "Backend is unavailable"
+            ]
+          },
+          "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+          "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+        },
+        "placement": {
+          "selected": "demo-cloud",
+          "backend": "cloud",
+          "rationale": "Cloud is permitted and feasible; the local option is not eligible.",
+          "alternatives": [],
+          "rejected": {
+            "demo-local": [
+              "Backend is unavailable"
+            ]
+          },
+          "estimates_only": true,
+          "policy_evaluation": {
+            "eligible": [
+              "demo-cloud"
+            ],
+            "rejected": {
+              "demo-local": [
+                "Backend is unavailable"
+              ]
+            },
+            "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+            "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+          }
+        },
+        "mode": "learning",
+        "provenance": "Hypothetical resource/model profiles",
+        "privacy": "Cloud processing explicitly permitted"
+      },
+      "document": {
+        "summary": [
+          {
+            "text": "I'll send the design draft by Friday.",
+            "source_ids": [
+              "s1"
+            ],
+            "evidence_quote": "I'll send the design draft by Friday."
+          },
+          {
+            "text": "I'll review the draft by Monday.",
+            "source_ids": [
+              "s2"
+            ],
+            "evidence_quote": "I'll review the draft by Monday."
+          },
+          {
+            "text": "We agreed to postpone the launch until the review is complete.",
+            "source_ids": [
+              "s3"
+            ],
+            "evidence_quote": "We agreed to postpone the launch until the review is complete."
+          }
+        ],
+        "actions": [
+          {
+            "text": "Send the design draft",
+            "source_ids": [
+              "s1"
+            ],
+            "evidence_quote": "I'll send the design draft by Friday.",
+            "owner": "Maya",
+            "due": "Friday"
+          },
+          {
+            "text": "Review the draft",
+            "source_ids": [
+              "s2"
+            ],
+            "evidence_quote": "I'll review the draft by Monday.",
+            "owner": "Rafi",
+            "due": "Monday"
+          }
+        ],
+        "decisions": [
+          {
+            "text": "We agreed to postpone the launch until the review is complete.",
+            "source_ids": [
+              "s3"
+            ],
+            "evidence_quote": "We agreed to postpone the launch until the review is complete."
+          }
+        ]
+      },
+      "trace": [
+        {
+          "id": "read",
+          "title": "Read the notes",
+          "explanation": "Accepted 4 numbered contributions. These are the evidence for the output.",
+          "data": {
+            "source_count": 4
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "telemetry",
+          "title": "Observe the conditions",
+          "explanation": "Read the supplied device/network conditions. These inputs are simulated, not readings from your laptop.",
+          "data": {
+            "battery": 65,
+            "cpu": 30,
+            "memory_utilization": 45,
+            "available_memory_gb": 8,
+            "network": "online",
+            "meeting_minutes": null,
+            "focus_mode": false
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "policy",
+          "title": "Check what is allowed",
+          "explanation": "Privacy is checked before placement. Only admitted candidates can receive the notes.",
+          "data": {
+            "eligible": [
+              "demo-cloud"
+            ],
+            "rejected": {
+              "demo-local": [
+                "Backend is unavailable"
+              ]
+            },
+            "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+            "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "scheduler",
+          "title": "Choose where and when",
+          "explanation": "The queue selected this interactive meeting request for its next work turn. Cloud is permitted and feasible; the local option is not eligible.",
+          "data": {
+            "selected": "demo-cloud",
+            "backend": "cloud",
+            "rationale": "Cloud is permitted and feasible; the local option is not eligible.",
+            "alternatives": [],
+            "rejected": {
+              "demo-local": [
+                "Backend is unavailable"
+              ]
+            },
+            "estimates_only": true,
+            "policy_evaluation": {
+              "eligible": [
+                "demo-cloud"
+              ],
+              "rejected": {
+                "demo-local": [
+                  "Backend is unavailable"
+                ]
+              },
+              "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+              "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+            }
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "execution",
+          "title": "Produce the draft",
+          "explanation": "Text rules extracted source passages and explicit commitments; no AI model or cloud request was used.",
+          "data": {
+            "actual_backend": "demo-cloud",
+            "execution_kind": "extractive_learning_rules",
+            "attempts": [
+              {
+                "provider": "demo-cloud",
+                "attempt": 1,
+                "status": "accepted",
+                "duration_ms": 0.0208
+              }
+            ]
+          },
+          "duration_ms": 0.0221
+        },
+        {
+          "id": "validation",
+          "title": "Verify source references",
+          "explanation": "Checked output structure, source IDs and exact evidence quotes. Owners/deadlines must appear in the sources. These checks do not prove every AI paraphrase is correct.",
+          "data": {
+            "key_points": 3,
+            "actions": 2,
+            "decisions": 1
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "outcomes",
+          "title": "Record the outcome",
+          "explanation": "Measured Python execution time and retained this run in the bounded workspace. No hardware energy, GPU or NPU metric is claimed.",
+          "data": {
+            "elapsed_ms": 0.0492,
+            "state": "complete",
+            "sensitive_prompts_in_trace": false
+          },
+          "duration_ms": null
+        }
+      ],
+      "actual_backend": "demo-cloud",
+      "execution_kind": "extractive_learning_rules",
+      "error": null,
+      "attempts": [
+        {
+          "provider": "demo-cloud",
+          "attempt": 1,
+          "status": "accepted",
+          "duration_ms": 0.0208
+        }
+      ],
+      "elapsed_ms": 0.0492,
+      "note": "No email, task-system update, or notification is sent. This output is for review.",
+      "queue": {
+        "items": [
+          {
+            "id": "f9fd5754-af79-4e0b-bda1-6bcbf5a0f34d",
+            "kind": "meeting",
+            "label": "Summarize this meeting",
+            "priority": 0,
+            "total": 1,
+            "done": 1,
+            "waited": 0,
+            "status": "complete"
+          }
+        ],
+        "next_order": [],
+        "events": [
+          "Added Summarize this meeting to the work queue.",
+          "Meeting request finished: complete."
+        ],
+        "indexed_words": 0,
+        "scope": "One Python worker, cooperative chunks, turn-based aging; no hardware preemption or deadline guarantee"
+      },
+      "source": "recorded_python_execution",
+      "sample_id": "design",
+      "experiment_id": "cloud"
+    },
+    "design:offline": {
+      "trace_id": "03745095-b3d4-4790-a314-6c55360aec1d",
+      "state": "complete",
+      "sentences": [
+        {
+          "id": "s1",
+          "speaker": "Maya",
+          "text": "I'll send the design draft by Friday."
+        },
+        {
+          "id": "s2",
+          "speaker": "Rafi",
+          "text": "I'll review the draft by Monday."
+        },
+        {
+          "id": "s3",
+          "speaker": "Team",
+          "text": "We agreed to postpone the launch until the review is complete."
+        },
+        {
+          "id": "s4",
+          "speaker": "Maya",
+          "text": "The first pilot will include five volunteers."
+        }
+      ],
+      "options": {
+        "mode": "learning",
+        "private": true,
+        "network": "offline",
+        "local_available": true,
+        "cloud_available": true,
+        "busy": false,
+        "failure": "none"
+      },
+      "plan": {
+        "telemetry": {
+          "battery": 65,
+          "cpu": 30,
+          "memory_utilization": 45,
+          "available_memory_gb": 8,
+          "network": "offline",
+          "meeting_minutes": null,
+          "focus_mode": false
+        },
+        "policy": {
+          "eligible": [
+            "demo-local"
+          ],
+          "rejected": {
+            "demo-cloud": [
+              "Remote processing is not permitted",
+              "Network is unavailable"
+            ]
+          },
+          "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+          "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+        },
+        "placement": {
+          "selected": "demo-local",
+          "backend": "local",
+          "rationale": "Sensitive context stays local; the model satisfies the required capabilities and resource budget.",
+          "alternatives": [],
+          "rejected": {
+            "demo-cloud": [
+              "Remote processing is not permitted",
+              "Network is unavailable"
+            ]
+          },
+          "estimates_only": true,
+          "policy_evaluation": {
+            "eligible": [
+              "demo-local"
+            ],
+            "rejected": {
+              "demo-cloud": [
+                "Remote processing is not permitted",
+                "Network is unavailable"
+              ]
+            },
+            "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+            "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+          }
+        },
+        "mode": "learning",
+        "provenance": "Hypothetical resource/model profiles",
+        "privacy": "On-device only"
+      },
+      "document": {
+        "summary": [
+          {
+            "text": "I'll send the design draft by Friday.",
+            "source_ids": [
+              "s1"
+            ],
+            "evidence_quote": "I'll send the design draft by Friday."
+          },
+          {
+            "text": "I'll review the draft by Monday.",
+            "source_ids": [
+              "s2"
+            ],
+            "evidence_quote": "I'll review the draft by Monday."
+          },
+          {
+            "text": "We agreed to postpone the launch until the review is complete.",
+            "source_ids": [
+              "s3"
+            ],
+            "evidence_quote": "We agreed to postpone the launch until the review is complete."
+          }
+        ],
+        "actions": [
+          {
+            "text": "Send the design draft",
+            "source_ids": [
+              "s1"
+            ],
+            "evidence_quote": "I'll send the design draft by Friday.",
+            "owner": "Maya",
+            "due": "Friday"
+          },
+          {
+            "text": "Review the draft",
+            "source_ids": [
+              "s2"
+            ],
+            "evidence_quote": "I'll review the draft by Monday.",
+            "owner": "Rafi",
+            "due": "Monday"
+          }
+        ],
+        "decisions": [
+          {
+            "text": "We agreed to postpone the launch until the review is complete.",
+            "source_ids": [
+              "s3"
+            ],
+            "evidence_quote": "We agreed to postpone the launch until the review is complete."
+          }
+        ]
+      },
+      "trace": [
+        {
+          "id": "read",
+          "title": "Read the notes",
+          "explanation": "Accepted 4 numbered contributions. These are the evidence for the output.",
+          "data": {
+            "source_count": 4
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "telemetry",
+          "title": "Observe the conditions",
+          "explanation": "Read the supplied device/network conditions. These inputs are simulated, not readings from your laptop.",
+          "data": {
+            "battery": 65,
+            "cpu": 30,
+            "memory_utilization": 45,
+            "available_memory_gb": 8,
+            "network": "offline",
+            "meeting_minutes": null,
+            "focus_mode": false
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "policy",
+          "title": "Check what is allowed",
+          "explanation": "Privacy is checked before placement. Only admitted candidates can receive the notes.",
+          "data": {
+            "eligible": [
+              "demo-local"
+            ],
+            "rejected": {
+              "demo-cloud": [
+                "Remote processing is not permitted",
+                "Network is unavailable"
+              ]
+            },
+            "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+            "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "scheduler",
+          "title": "Choose where and when",
+          "explanation": "The queue selected this interactive meeting request for its next work turn. Sensitive context stays local; the model satisfies the required capabilities and resource budget.",
+          "data": {
+            "selected": "demo-local",
+            "backend": "local",
+            "rationale": "Sensitive context stays local; the model satisfies the required capabilities and resource budget.",
+            "alternatives": [],
+            "rejected": {
+              "demo-cloud": [
+                "Remote processing is not permitted",
+                "Network is unavailable"
+              ]
+            },
+            "estimates_only": true,
+            "policy_evaluation": {
+              "eligible": [
+                "demo-local"
+              ],
+              "rejected": {
+                "demo-cloud": [
+                  "Remote processing is not permitted",
+                  "Network is unavailable"
+                ]
+              },
+              "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+              "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+            }
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "execution",
+          "title": "Produce the draft",
+          "explanation": "Text rules extracted source passages and explicit commitments; no AI model or cloud request was used.",
+          "data": {
+            "actual_backend": "demo-local",
+            "execution_kind": "extractive_learning_rules",
+            "attempts": [
+              {
+                "provider": "demo-local",
+                "attempt": 1,
+                "status": "accepted",
+                "duration_ms": 0.0176
+              }
+            ]
+          },
+          "duration_ms": 0.0186
+        },
+        {
+          "id": "validation",
+          "title": "Verify source references",
+          "explanation": "Checked output structure, source IDs and exact evidence quotes. Owners/deadlines must appear in the sources. These checks do not prove every AI paraphrase is correct.",
+          "data": {
+            "key_points": 3,
+            "actions": 2,
+            "decisions": 1
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "outcomes",
+          "title": "Record the outcome",
+          "explanation": "Measured Python execution time and retained this run in the bounded workspace. No hardware energy, GPU or NPU metric is claimed.",
+          "data": {
+            "elapsed_ms": 0.0444,
+            "state": "complete",
+            "sensitive_prompts_in_trace": false
+          },
+          "duration_ms": null
+        }
+      ],
+      "actual_backend": "demo-local",
+      "execution_kind": "extractive_learning_rules",
+      "error": null,
+      "attempts": [
+        {
+          "provider": "demo-local",
+          "attempt": 1,
+          "status": "accepted",
+          "duration_ms": 0.0176
+        }
+      ],
+      "elapsed_ms": 0.0444,
+      "note": "No email, task-system update, or notification is sent. This output is for review.",
+      "queue": {
+        "items": [
+          {
+            "id": "486d647e-c67e-40ec-9736-ac5674a879a1",
+            "kind": "meeting",
+            "label": "Summarize this meeting",
+            "priority": 0,
+            "total": 1,
+            "done": 1,
+            "waited": 0,
+            "status": "complete"
+          }
+        ],
+        "next_order": [],
+        "events": [
+          "Added Summarize this meeting to the work queue.",
+          "Meeting request finished: complete."
+        ],
+        "indexed_words": 0,
+        "scope": "One Python worker, cooperative chunks, turn-based aging; no hardware preemption or deadline guarantee"
+      },
+      "source": "recorded_python_execution",
+      "sample_id": "design",
+      "experiment_id": "offline"
+    },
+    "design:blocked": {
+      "trace_id": "417abd03-637c-4505-b033-8cec155fa6fa",
+      "state": "blocked",
+      "sentences": [
+        {
+          "id": "s1",
+          "speaker": "Maya",
+          "text": "I'll send the design draft by Friday."
+        },
+        {
+          "id": "s2",
+          "speaker": "Rafi",
+          "text": "I'll review the draft by Monday."
+        },
+        {
+          "id": "s3",
+          "speaker": "Team",
+          "text": "We agreed to postpone the launch until the review is complete."
+        },
+        {
+          "id": "s4",
+          "speaker": "Maya",
+          "text": "The first pilot will include five volunteers."
+        }
+      ],
+      "options": {
+        "mode": "learning",
+        "private": true,
+        "network": "online",
+        "local_available": false,
+        "cloud_available": true,
+        "busy": false,
+        "failure": "none"
+      },
+      "plan": {
+        "telemetry": {
+          "battery": 65,
+          "cpu": 30,
+          "memory_utilization": 45,
+          "available_memory_gb": 8,
+          "network": "online",
+          "meeting_minutes": null,
+          "focus_mode": false
+        },
+        "policy": {
+          "eligible": [],
+          "rejected": {
+            "demo-local": [
+              "Backend is unavailable"
+            ],
+            "demo-cloud": [
+              "Remote processing is not permitted"
+            ]
+          },
+          "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+          "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+        },
+        "placement": {
+          "selected": null,
+          "backend": null,
+          "rationale": "No backend satisfies privacy, capability, and resource constraints.",
+          "alternatives": [],
+          "rejected": {
+            "demo-local": [
+              "Backend is unavailable"
+            ],
+            "demo-cloud": [
+              "Remote processing is not permitted"
+            ]
+          },
+          "estimates_only": true,
+          "policy_evaluation": {
+            "eligible": [],
+            "rejected": {
+              "demo-local": [
+                "Backend is unavailable"
+              ],
+              "demo-cloud": [
+                "Remote processing is not permitted"
+              ]
+            },
+            "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+            "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+          }
+        },
+        "mode": "learning",
+        "provenance": "Hypothetical resource/model profiles",
+        "privacy": "On-device only"
+      },
+      "document": null,
+      "trace": [
+        {
+          "id": "read",
+          "title": "Read the notes",
+          "explanation": "Accepted 4 numbered contributions. These are the evidence for the output.",
+          "data": {
+            "source_count": 4
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "telemetry",
+          "title": "Observe the conditions",
+          "explanation": "Read the supplied device/network conditions. These inputs are simulated, not readings from your laptop.",
+          "data": {
+            "battery": 65,
+            "cpu": 30,
+            "memory_utilization": 45,
+            "available_memory_gb": 8,
+            "network": "online",
+            "meeting_minutes": null,
+            "focus_mode": false
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "policy",
+          "title": "Check what is allowed",
+          "explanation": "Privacy is checked before placement. Only admitted candidates can receive the notes.",
+          "data": {
+            "eligible": [],
+            "rejected": {
+              "demo-local": [
+                "Backend is unavailable"
+              ],
+              "demo-cloud": [
+                "Remote processing is not permitted"
+              ]
+            },
+            "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+            "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "scheduler",
+          "title": "Choose where and when",
+          "explanation": "The queue selected this interactive meeting request for its next work turn. No backend satisfies privacy, capability, and resource constraints.",
+          "data": {
+            "selected": null,
+            "backend": null,
+            "rationale": "No backend satisfies privacy, capability, and resource constraints.",
+            "alternatives": [],
+            "rejected": {
+              "demo-local": [
+                "Backend is unavailable"
+              ],
+              "demo-cloud": [
+                "Remote processing is not permitted"
+              ]
+            },
+            "estimates_only": true,
+            "policy_evaluation": {
+              "eligible": [],
+              "rejected": {
+                "demo-local": [
+                  "Backend is unavailable"
+                ],
+                "demo-cloud": [
+                  "Remote processing is not permitted"
+                ]
+              },
+              "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+              "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+            }
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "outcomes",
+          "title": "Record the outcome",
+          "explanation": "Measured Python execution time and retained this run in the bounded workspace. No hardware energy, GPU or NPU metric is claimed.",
+          "data": {
+            "elapsed_ms": 0.0217,
+            "state": "blocked",
+            "sensitive_prompts_in_trace": false
+          },
+          "duration_ms": null
+        }
+      ],
+      "actual_backend": null,
+      "execution_kind": "not_executed",
+      "error": "No permitted backend. Change availability or wait; privacy is not bypassed.",
+      "attempts": [],
+      "elapsed_ms": 0.0217,
+      "note": "No email, task-system update, or notification is sent. This output is for review.",
+      "queue": {
+        "items": [
+          {
+            "id": "fbd2fac2-f4b6-4d6d-89f2-ced52183f4d7",
+            "kind": "meeting",
+            "label": "Summarize this meeting",
+            "priority": 0,
+            "total": 1,
+            "done": 1,
+            "waited": 0,
+            "status": "blocked"
+          }
+        ],
+        "next_order": [],
+        "events": [
+          "Added Summarize this meeting to the work queue.",
+          "Meeting request finished: blocked."
+        ],
+        "indexed_words": 0,
+        "scope": "One Python worker, cooperative chunks, turn-based aging; no hardware preemption or deadline guarantee"
+      },
+      "source": "recorded_python_execution",
+      "sample_id": "design",
+      "experiment_id": "blocked"
+    },
+    "design:busy": {
+      "trace_id": "b5cbf9d0-9414-4822-86dc-572f22979028",
+      "state": "complete",
+      "sentences": [
+        {
+          "id": "s1",
+          "speaker": "Maya",
+          "text": "I'll send the design draft by Friday."
+        },
+        {
+          "id": "s2",
+          "speaker": "Rafi",
+          "text": "I'll review the draft by Monday."
+        },
+        {
+          "id": "s3",
+          "speaker": "Team",
+          "text": "We agreed to postpone the launch until the review is complete."
+        },
+        {
+          "id": "s4",
+          "speaker": "Maya",
+          "text": "The first pilot will include five volunteers."
+        }
+      ],
+      "options": {
+        "mode": "learning",
+        "private": true,
+        "network": "online",
+        "local_available": true,
+        "cloud_available": true,
+        "busy": true,
+        "failure": "none"
+      },
+      "plan": {
+        "telemetry": {
+          "battery": 65,
+          "cpu": 85,
+          "memory_utilization": 45,
+          "available_memory_gb": 6,
+          "network": "online",
+          "meeting_minutes": null,
+          "focus_mode": false
+        },
+        "policy": {
+          "eligible": [
+            "demo-local"
+          ],
+          "rejected": {
+            "demo-cloud": [
+              "Remote processing is not permitted"
+            ]
+          },
+          "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+          "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+        },
+        "placement": {
+          "selected": "demo-local",
+          "backend": "local",
+          "rationale": "Sensitive context stays local; the model satisfies the required capabilities and resource budget.",
+          "alternatives": [],
+          "rejected": {
+            "demo-cloud": [
+              "Remote processing is not permitted"
+            ]
+          },
+          "estimates_only": true,
+          "policy_evaluation": {
+            "eligible": [
+              "demo-local"
+            ],
+            "rejected": {
+              "demo-cloud": [
+                "Remote processing is not permitted"
+              ]
+            },
+            "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+            "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+          }
+        },
+        "mode": "learning",
+        "provenance": "Hypothetical resource/model profiles",
+        "privacy": "On-device only"
+      },
+      "document": {
+        "summary": [
+          {
+            "text": "I'll send the design draft by Friday.",
+            "source_ids": [
+              "s1"
+            ],
+            "evidence_quote": "I'll send the design draft by Friday."
+          },
+          {
+            "text": "I'll review the draft by Monday.",
+            "source_ids": [
+              "s2"
+            ],
+            "evidence_quote": "I'll review the draft by Monday."
+          },
+          {
+            "text": "We agreed to postpone the launch until the review is complete.",
+            "source_ids": [
+              "s3"
+            ],
+            "evidence_quote": "We agreed to postpone the launch until the review is complete."
+          }
+        ],
+        "actions": [
+          {
+            "text": "Send the design draft",
+            "source_ids": [
+              "s1"
+            ],
+            "evidence_quote": "I'll send the design draft by Friday.",
+            "owner": "Maya",
+            "due": "Friday"
+          },
+          {
+            "text": "Review the draft",
+            "source_ids": [
+              "s2"
+            ],
+            "evidence_quote": "I'll review the draft by Monday.",
+            "owner": "Rafi",
+            "due": "Monday"
+          }
+        ],
+        "decisions": [
+          {
+            "text": "We agreed to postpone the launch until the review is complete.",
+            "source_ids": [
+              "s3"
+            ],
+            "evidence_quote": "We agreed to postpone the launch until the review is complete."
+          }
+        ]
+      },
+      "trace": [
+        {
+          "id": "read",
+          "title": "Read the notes",
+          "explanation": "Accepted 4 numbered contributions. These are the evidence for the output.",
+          "data": {
+            "source_count": 4
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "telemetry",
+          "title": "Observe the conditions",
+          "explanation": "Read the supplied device/network conditions. These inputs are simulated, not readings from your laptop.",
+          "data": {
+            "battery": 65,
+            "cpu": 85,
+            "memory_utilization": 45,
+            "available_memory_gb": 6,
+            "network": "online",
+            "meeting_minutes": null,
+            "focus_mode": false
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "policy",
+          "title": "Check what is allowed",
+          "explanation": "Privacy is checked before placement. Only admitted candidates can receive the notes.",
+          "data": {
+            "eligible": [
+              "demo-local"
+            ],
+            "rejected": {
+              "demo-cloud": [
+                "Remote processing is not permitted"
+              ]
+            },
+            "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+            "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "scheduler",
+          "title": "Choose where and when",
+          "explanation": "The queue selected this interactive meeting request for its next work turn. Sensitive context stays local; the model satisfies the required capabilities and resource budget.",
+          "data": {
+            "selected": "demo-local",
+            "backend": "local",
+            "rationale": "Sensitive context stays local; the model satisfies the required capabilities and resource budget.",
+            "alternatives": [],
+            "rejected": {
+              "demo-cloud": [
+                "Remote processing is not permitted"
+              ]
+            },
+            "estimates_only": true,
+            "policy_evaluation": {
+              "eligible": [
+                "demo-local"
+              ],
+              "rejected": {
+                "demo-cloud": [
+                  "Remote processing is not permitted"
+                ]
+              },
+              "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+              "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+            }
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "execution",
+          "title": "Produce the draft",
+          "explanation": "Text rules extracted source passages and explicit commitments; no AI model or cloud request was used.",
+          "data": {
+            "actual_backend": "demo-local",
+            "execution_kind": "extractive_learning_rules",
+            "attempts": [
+              {
+                "provider": "demo-local",
+                "attempt": 1,
+                "status": "accepted",
+                "duration_ms": 0.0193
+              }
+            ]
+          },
+          "duration_ms": 0.0202
+        },
+        {
+          "id": "validation",
+          "title": "Verify source references",
+          "explanation": "Checked output structure, source IDs and exact evidence quotes. Owners/deadlines must appear in the sources. These checks do not prove every AI paraphrase is correct.",
+          "data": {
+            "key_points": 3,
+            "actions": 2,
+            "decisions": 1
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "outcomes",
+          "title": "Record the outcome",
+          "explanation": "Measured Python execution time and retained this run in the bounded workspace. No hardware energy, GPU or NPU metric is claimed.",
+          "data": {
+            "elapsed_ms": 0.0425,
+            "state": "complete",
+            "sensitive_prompts_in_trace": false
+          },
+          "duration_ms": null
+        }
+      ],
+      "actual_backend": "demo-local",
+      "execution_kind": "extractive_learning_rules",
+      "error": null,
+      "attempts": [
+        {
+          "provider": "demo-local",
+          "attempt": 1,
+          "status": "accepted",
+          "duration_ms": 0.0193
+        }
+      ],
+      "elapsed_ms": 0.0425,
+      "note": "No email, task-system update, or notification is sent. This output is for review.",
+      "queue": {
+        "items": [
+          {
+            "id": "e6daa913-0fe5-4351-9c34-053e3f3165a3",
+            "kind": "background",
+            "label": "Organize reference notes",
+            "priority": 10,
+            "total": 4,
+            "done": 1,
+            "waited": 1,
+            "status": "paused"
+          },
+          {
+            "id": "14fd9fb8-1615-454e-b052-feb611aedcf3",
+            "kind": "meeting",
+            "label": "Summarize this meeting",
+            "priority": 0,
+            "total": 1,
+            "done": 1,
+            "waited": 0,
+            "status": "complete"
+          }
+        ],
+        "next_order": [
+          "e6daa913-0fe5-4351-9c34-053e3f3165a3"
+        ],
+        "events": [
+          "Added Organize reference notes to the work queue.",
+          "Indexed reference chunk 1/4; 9 distinct words indexed.",
+          "Added Summarize this meeting to the work queue.",
+          "Meeting request takes priority. Background indexing yields at a chunk boundary.",
+          "Meeting request finished: complete."
+        ],
+        "indexed_words": 9,
+        "scope": "One Python worker, cooperative chunks, turn-based aging; no hardware preemption or deadline guarantee"
+      },
+      "source": "recorded_python_execution",
+      "sample_id": "design",
+      "experiment_id": "busy"
+    },
+    "design:fallback": {
+      "trace_id": "85d7d316-4b84-4ce7-91ac-ed75aeb1d66d",
+      "state": "complete",
+      "sentences": [
+        {
+          "id": "s1",
+          "speaker": "Maya",
+          "text": "I'll send the design draft by Friday."
+        },
+        {
+          "id": "s2",
+          "speaker": "Rafi",
+          "text": "I'll review the draft by Monday."
+        },
+        {
+          "id": "s3",
+          "speaker": "Team",
+          "text": "We agreed to postpone the launch until the review is complete."
+        },
+        {
+          "id": "s4",
+          "speaker": "Maya",
+          "text": "The first pilot will include five volunteers."
+        }
+      ],
+      "options": {
+        "mode": "learning",
+        "private": false,
+        "network": "online",
+        "local_available": true,
+        "cloud_available": true,
+        "busy": false,
+        "failure": "timeout"
+      },
+      "plan": {
+        "telemetry": {
+          "battery": 65,
+          "cpu": 30,
+          "memory_utilization": 45,
+          "available_memory_gb": 8,
+          "network": "online",
+          "meeting_minutes": null,
+          "focus_mode": false
+        },
+        "policy": {
+          "eligible": [
+            "demo-local",
+            "demo-cloud"
+          ],
+          "rejected": {},
+          "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+          "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+        },
+        "placement": {
+          "selected": "demo-local",
+          "backend": "local",
+          "rationale": "Local inference is feasible; keeping context on-device avoids remote processing.",
+          "alternatives": [
+            "demo-cloud"
+          ],
+          "rejected": {},
+          "estimates_only": true,
+          "policy_evaluation": {
+            "eligible": [
+              "demo-local",
+              "demo-cloud"
+            ],
+            "rejected": {},
+            "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+            "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+          }
+        },
+        "mode": "learning",
+        "provenance": "Hypothetical resource/model profiles",
+        "privacy": "Cloud processing explicitly permitted"
+      },
+      "document": {
+        "summary": [
+          {
+            "text": "I'll send the design draft by Friday.",
+            "source_ids": [
+              "s1"
+            ],
+            "evidence_quote": "I'll send the design draft by Friday."
+          },
+          {
+            "text": "I'll review the draft by Monday.",
+            "source_ids": [
+              "s2"
+            ],
+            "evidence_quote": "I'll review the draft by Monday."
+          },
+          {
+            "text": "We agreed to postpone the launch until the review is complete.",
+            "source_ids": [
+              "s3"
+            ],
+            "evidence_quote": "We agreed to postpone the launch until the review is complete."
+          }
+        ],
+        "actions": [
+          {
+            "text": "Send the design draft",
+            "source_ids": [
+              "s1"
+            ],
+            "evidence_quote": "I'll send the design draft by Friday.",
+            "owner": "Maya",
+            "due": "Friday"
+          },
+          {
+            "text": "Review the draft",
+            "source_ids": [
+              "s2"
+            ],
+            "evidence_quote": "I'll review the draft by Monday.",
+            "owner": "Rafi",
+            "due": "Monday"
+          }
+        ],
+        "decisions": [
+          {
+            "text": "We agreed to postpone the launch until the review is complete.",
+            "source_ids": [
+              "s3"
+            ],
+            "evidence_quote": "We agreed to postpone the launch until the review is complete."
+          }
+        ]
+      },
+      "trace": [
+        {
+          "id": "read",
+          "title": "Read the notes",
+          "explanation": "Accepted 4 numbered contributions. These are the evidence for the output.",
+          "data": {
+            "source_count": 4
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "telemetry",
+          "title": "Observe the conditions",
+          "explanation": "Read the supplied device/network conditions. These inputs are simulated, not readings from your laptop.",
+          "data": {
+            "battery": 65,
+            "cpu": 30,
+            "memory_utilization": 45,
+            "available_memory_gb": 8,
+            "network": "online",
+            "meeting_minutes": null,
+            "focus_mode": false
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "policy",
+          "title": "Check what is allowed",
+          "explanation": "Privacy is checked before placement. Only admitted candidates can receive the notes.",
+          "data": {
+            "eligible": [
+              "demo-local",
+              "demo-cloud"
+            ],
+            "rejected": {},
+            "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+            "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "scheduler",
+          "title": "Choose where and when",
+          "explanation": "The queue selected this interactive meeting request for its next work turn. Local inference is feasible; keeping context on-device avoids remote processing.",
+          "data": {
+            "selected": "demo-local",
+            "backend": "local",
+            "rationale": "Local inference is feasible; keeping context on-device avoids remote processing.",
+            "alternatives": [
+              "demo-cloud"
+            ],
+            "rejected": {},
+            "estimates_only": true,
+            "policy_evaluation": {
+              "eligible": [
+                "demo-local",
+                "demo-cloud"
+              ],
+              "rejected": {},
+              "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+              "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+            }
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "execution",
+          "title": "Produce the draft",
+          "explanation": "Text rules extracted source passages and explicit commitments; no AI model or cloud request was used.",
+          "data": {
+            "actual_backend": "demo-cloud",
+            "execution_kind": "extractive_learning_rules",
+            "attempts": [
+              {
+                "provider": "demo-local",
+                "attempt": 1,
+                "status": "timeout",
+                "duration_ms": 0.001
+              },
+              {
+                "provider": "demo-local",
+                "attempt": 2,
+                "status": "timeout",
+                "duration_ms": 0.0153
+              },
+              {
+                "provider": "demo-cloud",
+                "attempt": 1,
+                "status": "accepted",
+                "duration_ms": 0.0767
+              }
+            ]
+          },
+          "duration_ms": 0.0806
+        },
+        {
+          "id": "validation",
+          "title": "Verify source references",
+          "explanation": "Checked output structure, source IDs and exact evidence quotes. Owners/deadlines must appear in the sources. These checks do not prove every AI paraphrase is correct.",
+          "data": {
+            "key_points": 3,
+            "actions": 2,
+            "decisions": 1
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "outcomes",
+          "title": "Record the outcome",
+          "explanation": "Measured Python execution time and retained this run in the bounded workspace. No hardware energy, GPU or NPU metric is claimed.",
+          "data": {
+            "elapsed_ms": 25.1655,
+            "state": "complete",
+            "sensitive_prompts_in_trace": false
+          },
+          "duration_ms": null
+        }
+      ],
+      "actual_backend": "demo-cloud",
+      "execution_kind": "extractive_learning_rules",
+      "error": null,
+      "attempts": [
+        {
+          "provider": "demo-local",
+          "attempt": 1,
+          "status": "timeout",
+          "duration_ms": 0.001
+        },
+        {
+          "provider": "demo-local",
+          "attempt": 2,
+          "status": "timeout",
+          "duration_ms": 0.0153
+        },
+        {
+          "provider": "demo-cloud",
+          "attempt": 1,
+          "status": "accepted",
+          "duration_ms": 0.0767
+        }
+      ],
+      "elapsed_ms": 25.1655,
+      "note": "No email, task-system update, or notification is sent. This output is for review.",
+      "queue": {
+        "items": [
+          {
+            "id": "4d7d736a-bb89-4cc6-bc43-49e438d14b87",
+            "kind": "meeting",
+            "label": "Summarize this meeting",
+            "priority": 0,
+            "total": 1,
+            "done": 1,
+            "waited": 0,
+            "status": "complete"
+          }
+        ],
+        "next_order": [],
+        "events": [
+          "Added Summarize this meeting to the work queue.",
+          "Meeting request finished: complete."
+        ],
+        "indexed_words": 0,
+        "scope": "One Python worker, cooperative chunks, turn-based aging; no hardware preemption or deadline guarantee"
+      },
+      "source": "recorded_python_execution",
+      "sample_id": "design",
+      "experiment_id": "fallback"
+    },
+    "week:baseline": {
+      "trace_id": "2621a04c-9f17-4308-8954-c095ffd8b423",
+      "state": "complete",
+      "sentences": [
+        {
+          "id": "s1",
+          "speaker": "Noor",
+          "text": "I'll update the project brief by Tuesday."
+        },
+        {
+          "id": "s2",
+          "speaker": "Lina",
+          "text": "I'll check the budget by Thursday."
+        },
+        {
+          "id": "s3",
+          "speaker": "Team",
+          "text": "We decided to keep the first release small."
+        },
+        {
+          "id": "s4",
+          "speaker": "Noor",
+          "text": "The release will include search and a reading list."
+        }
+      ],
+      "options": {
+        "mode": "learning",
+        "private": true,
+        "network": "online",
+        "local_available": true,
+        "cloud_available": true,
+        "busy": false,
+        "failure": "none"
+      },
+      "plan": {
+        "telemetry": {
+          "battery": 65,
+          "cpu": 30,
+          "memory_utilization": 45,
+          "available_memory_gb": 8,
+          "network": "online",
+          "meeting_minutes": null,
+          "focus_mode": false
+        },
+        "policy": {
+          "eligible": [
+            "demo-local"
+          ],
+          "rejected": {
+            "demo-cloud": [
+              "Remote processing is not permitted"
+            ]
+          },
+          "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+          "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+        },
+        "placement": {
+          "selected": "demo-local",
+          "backend": "local",
+          "rationale": "Sensitive context stays local; the model satisfies the required capabilities and resource budget.",
+          "alternatives": [],
+          "rejected": {
+            "demo-cloud": [
+              "Remote processing is not permitted"
+            ]
+          },
+          "estimates_only": true,
+          "policy_evaluation": {
+            "eligible": [
+              "demo-local"
+            ],
+            "rejected": {
+              "demo-cloud": [
+                "Remote processing is not permitted"
+              ]
+            },
+            "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+            "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+          }
+        },
+        "mode": "learning",
+        "provenance": "Hypothetical resource/model profiles",
+        "privacy": "On-device only"
+      },
+      "document": {
+        "summary": [
+          {
+            "text": "I'll update the project brief by Tuesday.",
+            "source_ids": [
+              "s1"
+            ],
+            "evidence_quote": "I'll update the project brief by Tuesday."
+          },
+          {
+            "text": "I'll check the budget by Thursday.",
+            "source_ids": [
+              "s2"
+            ],
+            "evidence_quote": "I'll check the budget by Thursday."
+          },
+          {
+            "text": "We decided to keep the first release small.",
+            "source_ids": [
+              "s3"
+            ],
+            "evidence_quote": "We decided to keep the first release small."
+          }
+        ],
+        "actions": [
+          {
+            "text": "Update the project brief",
+            "source_ids": [
+              "s1"
+            ],
+            "evidence_quote": "I'll update the project brief by Tuesday.",
+            "owner": "Noor",
+            "due": "Tuesday"
+          },
+          {
+            "text": "Check the budget",
+            "source_ids": [
+              "s2"
+            ],
+            "evidence_quote": "I'll check the budget by Thursday.",
+            "owner": "Lina",
+            "due": "Thursday"
+          }
+        ],
+        "decisions": [
+          {
+            "text": "We decided to keep the first release small.",
+            "source_ids": [
+              "s3"
+            ],
+            "evidence_quote": "We decided to keep the first release small."
+          }
+        ]
+      },
+      "trace": [
+        {
+          "id": "read",
+          "title": "Read the notes",
+          "explanation": "Accepted 4 numbered contributions. These are the evidence for the output.",
+          "data": {
+            "source_count": 4
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "telemetry",
+          "title": "Observe the conditions",
+          "explanation": "Read the supplied device/network conditions. These inputs are simulated, not readings from your laptop.",
+          "data": {
+            "battery": 65,
+            "cpu": 30,
+            "memory_utilization": 45,
+            "available_memory_gb": 8,
+            "network": "online",
+            "meeting_minutes": null,
+            "focus_mode": false
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "policy",
+          "title": "Check what is allowed",
+          "explanation": "Privacy is checked before placement. Only admitted candidates can receive the notes.",
+          "data": {
+            "eligible": [
+              "demo-local"
+            ],
+            "rejected": {
+              "demo-cloud": [
+                "Remote processing is not permitted"
+              ]
+            },
+            "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+            "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "scheduler",
+          "title": "Choose where and when",
+          "explanation": "The queue selected this interactive meeting request for its next work turn. Sensitive context stays local; the model satisfies the required capabilities and resource budget.",
+          "data": {
+            "selected": "demo-local",
+            "backend": "local",
+            "rationale": "Sensitive context stays local; the model satisfies the required capabilities and resource budget.",
+            "alternatives": [],
+            "rejected": {
+              "demo-cloud": [
+                "Remote processing is not permitted"
+              ]
+            },
+            "estimates_only": true,
+            "policy_evaluation": {
+              "eligible": [
+                "demo-local"
+              ],
+              "rejected": {
+                "demo-cloud": [
+                  "Remote processing is not permitted"
+                ]
+              },
+              "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+              "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+            }
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "execution",
+          "title": "Produce the draft",
+          "explanation": "Text rules extracted source passages and explicit commitments; no AI model or cloud request was used.",
+          "data": {
+            "actual_backend": "demo-local",
+            "execution_kind": "extractive_learning_rules",
+            "attempts": [
+              {
+                "provider": "demo-local",
+                "attempt": 1,
+                "status": "accepted",
+                "duration_ms": 0.2068
+              }
+            ]
+          },
+          "duration_ms": 0.2101
+        },
+        {
+          "id": "validation",
+          "title": "Verify source references",
+          "explanation": "Checked output structure, source IDs and exact evidence quotes. Owners/deadlines must appear in the sources. These checks do not prove every AI paraphrase is correct.",
+          "data": {
+            "key_points": 3,
+            "actions": 2,
+            "decisions": 1
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "outcomes",
+          "title": "Record the outcome",
+          "explanation": "Measured Python execution time and retained this run in the bounded workspace. No hardware energy, GPU or NPU metric is claimed.",
+          "data": {
+            "elapsed_ms": 0.2902,
+            "state": "complete",
+            "sensitive_prompts_in_trace": false
+          },
+          "duration_ms": null
+        }
+      ],
+      "actual_backend": "demo-local",
+      "execution_kind": "extractive_learning_rules",
+      "error": null,
+      "attempts": [
+        {
+          "provider": "demo-local",
+          "attempt": 1,
+          "status": "accepted",
+          "duration_ms": 0.2068
+        }
+      ],
+      "elapsed_ms": 0.2902,
+      "note": "No email, task-system update, or notification is sent. This output is for review.",
+      "queue": {
+        "items": [
+          {
+            "id": "342b600e-79f2-42d8-bc4a-a80a9e1623fe",
+            "kind": "meeting",
+            "label": "Summarize this meeting",
+            "priority": 0,
+            "total": 1,
+            "done": 1,
+            "waited": 0,
+            "status": "complete"
+          }
+        ],
+        "next_order": [],
+        "events": [
+          "Added Summarize this meeting to the work queue.",
+          "Meeting request finished: complete."
+        ],
+        "indexed_words": 0,
+        "scope": "One Python worker, cooperative chunks, turn-based aging; no hardware preemption or deadline guarantee"
+      },
+      "source": "recorded_python_execution",
+      "sample_id": "week",
+      "experiment_id": "baseline"
+    },
+    "week:cloud": {
+      "trace_id": "963f761f-2cac-4620-a8ac-43a6a158e859",
+      "state": "complete",
+      "sentences": [
+        {
+          "id": "s1",
+          "speaker": "Noor",
+          "text": "I'll update the project brief by Tuesday."
+        },
+        {
+          "id": "s2",
+          "speaker": "Lina",
+          "text": "I'll check the budget by Thursday."
+        },
+        {
+          "id": "s3",
+          "speaker": "Team",
+          "text": "We decided to keep the first release small."
+        },
+        {
+          "id": "s4",
+          "speaker": "Noor",
+          "text": "The release will include search and a reading list."
+        }
+      ],
+      "options": {
+        "mode": "learning",
+        "private": false,
+        "network": "online",
+        "local_available": false,
+        "cloud_available": true,
+        "busy": false,
+        "failure": "none"
+      },
+      "plan": {
+        "telemetry": {
+          "battery": 65,
+          "cpu": 30,
+          "memory_utilization": 45,
+          "available_memory_gb": 8,
+          "network": "online",
+          "meeting_minutes": null,
+          "focus_mode": false
+        },
+        "policy": {
+          "eligible": [
+            "demo-cloud"
+          ],
+          "rejected": {
+            "demo-local": [
+              "Backend is unavailable"
+            ]
+          },
+          "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+          "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+        },
+        "placement": {
+          "selected": "demo-cloud",
+          "backend": "cloud",
+          "rationale": "Cloud is permitted and feasible; the local option is not eligible.",
+          "alternatives": [],
+          "rejected": {
+            "demo-local": [
+              "Backend is unavailable"
+            ]
+          },
+          "estimates_only": true,
+          "policy_evaluation": {
+            "eligible": [
+              "demo-cloud"
+            ],
+            "rejected": {
+              "demo-local": [
+                "Backend is unavailable"
+              ]
+            },
+            "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+            "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+          }
+        },
+        "mode": "learning",
+        "provenance": "Hypothetical resource/model profiles",
+        "privacy": "Cloud processing explicitly permitted"
+      },
+      "document": {
+        "summary": [
+          {
+            "text": "I'll update the project brief by Tuesday.",
+            "source_ids": [
+              "s1"
+            ],
+            "evidence_quote": "I'll update the project brief by Tuesday."
+          },
+          {
+            "text": "I'll check the budget by Thursday.",
+            "source_ids": [
+              "s2"
+            ],
+            "evidence_quote": "I'll check the budget by Thursday."
+          },
+          {
+            "text": "We decided to keep the first release small.",
+            "source_ids": [
+              "s3"
+            ],
+            "evidence_quote": "We decided to keep the first release small."
+          }
+        ],
+        "actions": [
+          {
+            "text": "Update the project brief",
+            "source_ids": [
+              "s1"
+            ],
+            "evidence_quote": "I'll update the project brief by Tuesday.",
+            "owner": "Noor",
+            "due": "Tuesday"
+          },
+          {
+            "text": "Check the budget",
+            "source_ids": [
+              "s2"
+            ],
+            "evidence_quote": "I'll check the budget by Thursday.",
+            "owner": "Lina",
+            "due": "Thursday"
+          }
+        ],
+        "decisions": [
+          {
+            "text": "We decided to keep the first release small.",
+            "source_ids": [
+              "s3"
+            ],
+            "evidence_quote": "We decided to keep the first release small."
+          }
+        ]
+      },
+      "trace": [
+        {
+          "id": "read",
+          "title": "Read the notes",
+          "explanation": "Accepted 4 numbered contributions. These are the evidence for the output.",
+          "data": {
+            "source_count": 4
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "telemetry",
+          "title": "Observe the conditions",
+          "explanation": "Read the supplied device/network conditions. These inputs are simulated, not readings from your laptop.",
+          "data": {
+            "battery": 65,
+            "cpu": 30,
+            "memory_utilization": 45,
+            "available_memory_gb": 8,
+            "network": "online",
+            "meeting_minutes": null,
+            "focus_mode": false
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "policy",
+          "title": "Check what is allowed",
+          "explanation": "Privacy is checked before placement. Only admitted candidates can receive the notes.",
+          "data": {
+            "eligible": [
+              "demo-cloud"
+            ],
+            "rejected": {
+              "demo-local": [
+                "Backend is unavailable"
+              ]
+            },
+            "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+            "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "scheduler",
+          "title": "Choose where and when",
+          "explanation": "The queue selected this interactive meeting request for its next work turn. Cloud is permitted and feasible; the local option is not eligible.",
+          "data": {
+            "selected": "demo-cloud",
+            "backend": "cloud",
+            "rationale": "Cloud is permitted and feasible; the local option is not eligible.",
+            "alternatives": [],
+            "rejected": {
+              "demo-local": [
+                "Backend is unavailable"
+              ]
+            },
+            "estimates_only": true,
+            "policy_evaluation": {
+              "eligible": [
+                "demo-cloud"
+              ],
+              "rejected": {
+                "demo-local": [
+                  "Backend is unavailable"
+                ]
+              },
+              "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+              "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+            }
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "execution",
+          "title": "Produce the draft",
+          "explanation": "Text rules extracted source passages and explicit commitments; no AI model or cloud request was used.",
+          "data": {
+            "actual_backend": "demo-cloud",
+            "execution_kind": "extractive_learning_rules",
+            "attempts": [
+              {
+                "provider": "demo-cloud",
+                "attempt": 1,
+                "status": "accepted",
+                "duration_ms": 0.0417
+              }
+            ]
+          },
+          "duration_ms": 0.0439
+        },
+        {
+          "id": "validation",
+          "title": "Verify source references",
+          "explanation": "Checked output structure, source IDs and exact evidence quotes. Owners/deadlines must appear in the sources. These checks do not prove every AI paraphrase is correct.",
+          "data": {
+            "key_points": 3,
+            "actions": 2,
+            "decisions": 1
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "outcomes",
+          "title": "Record the outcome",
+          "explanation": "Measured Python execution time and retained this run in the bounded workspace. No hardware energy, GPU or NPU metric is claimed.",
+          "data": {
+            "elapsed_ms": 0.1061,
+            "state": "complete",
+            "sensitive_prompts_in_trace": false
+          },
+          "duration_ms": null
+        }
+      ],
+      "actual_backend": "demo-cloud",
+      "execution_kind": "extractive_learning_rules",
+      "error": null,
+      "attempts": [
+        {
+          "provider": "demo-cloud",
+          "attempt": 1,
+          "status": "accepted",
+          "duration_ms": 0.0417
+        }
+      ],
+      "elapsed_ms": 0.1061,
+      "note": "No email, task-system update, or notification is sent. This output is for review.",
+      "queue": {
+        "items": [
+          {
+            "id": "871f0d49-aab6-4fe5-b032-07d140097ac1",
+            "kind": "meeting",
+            "label": "Summarize this meeting",
+            "priority": 0,
+            "total": 1,
+            "done": 1,
+            "waited": 0,
+            "status": "complete"
+          }
+        ],
+        "next_order": [],
+        "events": [
+          "Added Summarize this meeting to the work queue.",
+          "Meeting request finished: complete."
+        ],
+        "indexed_words": 0,
+        "scope": "One Python worker, cooperative chunks, turn-based aging; no hardware preemption or deadline guarantee"
+      },
+      "source": "recorded_python_execution",
+      "sample_id": "week",
+      "experiment_id": "cloud"
+    },
+    "week:offline": {
+      "trace_id": "0cfb19d7-f11e-4b96-82f7-8dd4aa40cd57",
+      "state": "complete",
+      "sentences": [
+        {
+          "id": "s1",
+          "speaker": "Noor",
+          "text": "I'll update the project brief by Tuesday."
+        },
+        {
+          "id": "s2",
+          "speaker": "Lina",
+          "text": "I'll check the budget by Thursday."
+        },
+        {
+          "id": "s3",
+          "speaker": "Team",
+          "text": "We decided to keep the first release small."
+        },
+        {
+          "id": "s4",
+          "speaker": "Noor",
+          "text": "The release will include search and a reading list."
+        }
+      ],
+      "options": {
+        "mode": "learning",
+        "private": true,
+        "network": "offline",
+        "local_available": true,
+        "cloud_available": true,
+        "busy": false,
+        "failure": "none"
+      },
+      "plan": {
+        "telemetry": {
+          "battery": 65,
+          "cpu": 30,
+          "memory_utilization": 45,
+          "available_memory_gb": 8,
+          "network": "offline",
+          "meeting_minutes": null,
+          "focus_mode": false
+        },
+        "policy": {
+          "eligible": [
+            "demo-local"
+          ],
+          "rejected": {
+            "demo-cloud": [
+              "Remote processing is not permitted",
+              "Network is unavailable"
+            ]
+          },
+          "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+          "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+        },
+        "placement": {
+          "selected": "demo-local",
+          "backend": "local",
+          "rationale": "Sensitive context stays local; the model satisfies the required capabilities and resource budget.",
+          "alternatives": [],
+          "rejected": {
+            "demo-cloud": [
+              "Remote processing is not permitted",
+              "Network is unavailable"
+            ]
+          },
+          "estimates_only": true,
+          "policy_evaluation": {
+            "eligible": [
+              "demo-local"
+            ],
+            "rejected": {
+              "demo-cloud": [
+                "Remote processing is not permitted",
+                "Network is unavailable"
+              ]
+            },
+            "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+            "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+          }
+        },
+        "mode": "learning",
+        "provenance": "Hypothetical resource/model profiles",
+        "privacy": "On-device only"
+      },
+      "document": {
+        "summary": [
+          {
+            "text": "I'll update the project brief by Tuesday.",
+            "source_ids": [
+              "s1"
+            ],
+            "evidence_quote": "I'll update the project brief by Tuesday."
+          },
+          {
+            "text": "I'll check the budget by Thursday.",
+            "source_ids": [
+              "s2"
+            ],
+            "evidence_quote": "I'll check the budget by Thursday."
+          },
+          {
+            "text": "We decided to keep the first release small.",
+            "source_ids": [
+              "s3"
+            ],
+            "evidence_quote": "We decided to keep the first release small."
+          }
+        ],
+        "actions": [
+          {
+            "text": "Update the project brief",
+            "source_ids": [
+              "s1"
+            ],
+            "evidence_quote": "I'll update the project brief by Tuesday.",
+            "owner": "Noor",
+            "due": "Tuesday"
+          },
+          {
+            "text": "Check the budget",
+            "source_ids": [
+              "s2"
+            ],
+            "evidence_quote": "I'll check the budget by Thursday.",
+            "owner": "Lina",
+            "due": "Thursday"
+          }
+        ],
+        "decisions": [
+          {
+            "text": "We decided to keep the first release small.",
+            "source_ids": [
+              "s3"
+            ],
+            "evidence_quote": "We decided to keep the first release small."
+          }
+        ]
+      },
+      "trace": [
+        {
+          "id": "read",
+          "title": "Read the notes",
+          "explanation": "Accepted 4 numbered contributions. These are the evidence for the output.",
+          "data": {
+            "source_count": 4
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "telemetry",
+          "title": "Observe the conditions",
+          "explanation": "Read the supplied device/network conditions. These inputs are simulated, not readings from your laptop.",
+          "data": {
+            "battery": 65,
+            "cpu": 30,
+            "memory_utilization": 45,
+            "available_memory_gb": 8,
+            "network": "offline",
+            "meeting_minutes": null,
+            "focus_mode": false
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "policy",
+          "title": "Check what is allowed",
+          "explanation": "Privacy is checked before placement. Only admitted candidates can receive the notes.",
+          "data": {
+            "eligible": [
+              "demo-local"
+            ],
+            "rejected": {
+              "demo-cloud": [
+                "Remote processing is not permitted",
+                "Network is unavailable"
+              ]
+            },
+            "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+            "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "scheduler",
+          "title": "Choose where and when",
+          "explanation": "The queue selected this interactive meeting request for its next work turn. Sensitive context stays local; the model satisfies the required capabilities and resource budget.",
+          "data": {
+            "selected": "demo-local",
+            "backend": "local",
+            "rationale": "Sensitive context stays local; the model satisfies the required capabilities and resource budget.",
+            "alternatives": [],
+            "rejected": {
+              "demo-cloud": [
+                "Remote processing is not permitted",
+                "Network is unavailable"
+              ]
+            },
+            "estimates_only": true,
+            "policy_evaluation": {
+              "eligible": [
+                "demo-local"
+              ],
+              "rejected": {
+                "demo-cloud": [
+                  "Remote processing is not permitted",
+                  "Network is unavailable"
+                ]
+              },
+              "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+              "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+            }
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "execution",
+          "title": "Produce the draft",
+          "explanation": "Text rules extracted source passages and explicit commitments; no AI model or cloud request was used.",
+          "data": {
+            "actual_backend": "demo-local",
+            "execution_kind": "extractive_learning_rules",
+            "attempts": [
+              {
+                "provider": "demo-local",
+                "attempt": 1,
+                "status": "accepted",
+                "duration_ms": 0.0405
+              }
+            ]
+          },
+          "duration_ms": 0.0424
+        },
+        {
+          "id": "validation",
+          "title": "Verify source references",
+          "explanation": "Checked output structure, source IDs and exact evidence quotes. Owners/deadlines must appear in the sources. These checks do not prove every AI paraphrase is correct.",
+          "data": {
+            "key_points": 3,
+            "actions": 2,
+            "decisions": 1
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "outcomes",
+          "title": "Record the outcome",
+          "explanation": "Measured Python execution time and retained this run in the bounded workspace. No hardware energy, GPU or NPU metric is claimed.",
+          "data": {
+            "elapsed_ms": 0.099,
+            "state": "complete",
+            "sensitive_prompts_in_trace": false
+          },
+          "duration_ms": null
+        }
+      ],
+      "actual_backend": "demo-local",
+      "execution_kind": "extractive_learning_rules",
+      "error": null,
+      "attempts": [
+        {
+          "provider": "demo-local",
+          "attempt": 1,
+          "status": "accepted",
+          "duration_ms": 0.0405
+        }
+      ],
+      "elapsed_ms": 0.099,
+      "note": "No email, task-system update, or notification is sent. This output is for review.",
+      "queue": {
+        "items": [
+          {
+            "id": "22ebbac0-1bbb-4076-a47b-7373d8e7da6b",
+            "kind": "meeting",
+            "label": "Summarize this meeting",
+            "priority": 0,
+            "total": 1,
+            "done": 1,
+            "waited": 0,
+            "status": "complete"
+          }
+        ],
+        "next_order": [],
+        "events": [
+          "Added Summarize this meeting to the work queue.",
+          "Meeting request finished: complete."
+        ],
+        "indexed_words": 0,
+        "scope": "One Python worker, cooperative chunks, turn-based aging; no hardware preemption or deadline guarantee"
+      },
+      "source": "recorded_python_execution",
+      "sample_id": "week",
+      "experiment_id": "offline"
+    },
+    "week:blocked": {
+      "trace_id": "af62ea27-3ff1-4a57-8e2d-aa1ec9b14dc1",
+      "state": "blocked",
+      "sentences": [
+        {
+          "id": "s1",
+          "speaker": "Noor",
+          "text": "I'll update the project brief by Tuesday."
+        },
+        {
+          "id": "s2",
+          "speaker": "Lina",
+          "text": "I'll check the budget by Thursday."
+        },
+        {
+          "id": "s3",
+          "speaker": "Team",
+          "text": "We decided to keep the first release small."
+        },
+        {
+          "id": "s4",
+          "speaker": "Noor",
+          "text": "The release will include search and a reading list."
+        }
+      ],
+      "options": {
+        "mode": "learning",
+        "private": true,
+        "network": "online",
+        "local_available": false,
+        "cloud_available": true,
+        "busy": false,
+        "failure": "none"
+      },
+      "plan": {
+        "telemetry": {
+          "battery": 65,
+          "cpu": 30,
+          "memory_utilization": 45,
+          "available_memory_gb": 8,
+          "network": "online",
+          "meeting_minutes": null,
+          "focus_mode": false
+        },
+        "policy": {
+          "eligible": [],
+          "rejected": {
+            "demo-local": [
+              "Backend is unavailable"
+            ],
+            "demo-cloud": [
+              "Remote processing is not permitted"
+            ]
+          },
+          "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+          "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+        },
+        "placement": {
+          "selected": null,
+          "backend": null,
+          "rationale": "No backend satisfies privacy, capability, and resource constraints.",
+          "alternatives": [],
+          "rejected": {
+            "demo-local": [
+              "Backend is unavailable"
+            ],
+            "demo-cloud": [
+              "Remote processing is not permitted"
+            ]
+          },
+          "estimates_only": true,
+          "policy_evaluation": {
+            "eligible": [],
+            "rejected": {
+              "demo-local": [
+                "Backend is unavailable"
+              ],
+              "demo-cloud": [
+                "Remote processing is not permitted"
+              ]
+            },
+            "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+            "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+          }
+        },
+        "mode": "learning",
+        "provenance": "Hypothetical resource/model profiles",
+        "privacy": "On-device only"
+      },
+      "document": null,
+      "trace": [
+        {
+          "id": "read",
+          "title": "Read the notes",
+          "explanation": "Accepted 4 numbered contributions. These are the evidence for the output.",
+          "data": {
+            "source_count": 4
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "telemetry",
+          "title": "Observe the conditions",
+          "explanation": "Read the supplied device/network conditions. These inputs are simulated, not readings from your laptop.",
+          "data": {
+            "battery": 65,
+            "cpu": 30,
+            "memory_utilization": 45,
+            "available_memory_gb": 8,
+            "network": "online",
+            "meeting_minutes": null,
+            "focus_mode": false
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "policy",
+          "title": "Check what is allowed",
+          "explanation": "Privacy is checked before placement. Only admitted candidates can receive the notes.",
+          "data": {
+            "eligible": [],
+            "rejected": {
+              "demo-local": [
+                "Backend is unavailable"
+              ],
+              "demo-cloud": [
+                "Remote processing is not permitted"
+              ]
+            },
+            "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+            "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "scheduler",
+          "title": "Choose where and when",
+          "explanation": "The queue selected this interactive meeting request for its next work turn. No backend satisfies privacy, capability, and resource constraints.",
+          "data": {
+            "selected": null,
+            "backend": null,
+            "rationale": "No backend satisfies privacy, capability, and resource constraints.",
+            "alternatives": [],
+            "rejected": {
+              "demo-local": [
+                "Backend is unavailable"
+              ],
+              "demo-cloud": [
+                "Remote processing is not permitted"
+              ]
+            },
+            "estimates_only": true,
+            "policy_evaluation": {
+              "eligible": [],
+              "rejected": {
+                "demo-local": [
+                  "Backend is unavailable"
+                ],
+                "demo-cloud": [
+                  "Remote processing is not permitted"
+                ]
+              },
+              "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+              "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+            }
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "outcomes",
+          "title": "Record the outcome",
+          "explanation": "Measured Python execution time and retained this run in the bounded workspace. No hardware energy, GPU or NPU metric is claimed.",
+          "data": {
+            "elapsed_ms": 0.0492,
+            "state": "blocked",
+            "sensitive_prompts_in_trace": false
+          },
+          "duration_ms": null
+        }
+      ],
+      "actual_backend": null,
+      "execution_kind": "not_executed",
+      "error": "No permitted backend. Change availability or wait; privacy is not bypassed.",
+      "attempts": [],
+      "elapsed_ms": 0.0492,
+      "note": "No email, task-system update, or notification is sent. This output is for review.",
+      "queue": {
+        "items": [
+          {
+            "id": "ce93ec20-81bf-43e7-9eb5-1438da411afc",
+            "kind": "meeting",
+            "label": "Summarize this meeting",
+            "priority": 0,
+            "total": 1,
+            "done": 1,
+            "waited": 0,
+            "status": "blocked"
+          }
+        ],
+        "next_order": [],
+        "events": [
+          "Added Summarize this meeting to the work queue.",
+          "Meeting request finished: blocked."
+        ],
+        "indexed_words": 0,
+        "scope": "One Python worker, cooperative chunks, turn-based aging; no hardware preemption or deadline guarantee"
+      },
+      "source": "recorded_python_execution",
+      "sample_id": "week",
+      "experiment_id": "blocked"
+    },
+    "week:busy": {
+      "trace_id": "d423e715-dd8a-40b4-b99c-e7390c65e668",
+      "state": "complete",
+      "sentences": [
+        {
+          "id": "s1",
+          "speaker": "Noor",
+          "text": "I'll update the project brief by Tuesday."
+        },
+        {
+          "id": "s2",
+          "speaker": "Lina",
+          "text": "I'll check the budget by Thursday."
+        },
+        {
+          "id": "s3",
+          "speaker": "Team",
+          "text": "We decided to keep the first release small."
+        },
+        {
+          "id": "s4",
+          "speaker": "Noor",
+          "text": "The release will include search and a reading list."
+        }
+      ],
+      "options": {
+        "mode": "learning",
+        "private": true,
+        "network": "online",
+        "local_available": true,
+        "cloud_available": true,
+        "busy": true,
+        "failure": "none"
+      },
+      "plan": {
+        "telemetry": {
+          "battery": 65,
+          "cpu": 85,
+          "memory_utilization": 45,
+          "available_memory_gb": 6,
+          "network": "online",
+          "meeting_minutes": null,
+          "focus_mode": false
+        },
+        "policy": {
+          "eligible": [
+            "demo-local"
+          ],
+          "rejected": {
+            "demo-cloud": [
+              "Remote processing is not permitted"
+            ]
+          },
+          "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+          "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+        },
+        "placement": {
+          "selected": "demo-local",
+          "backend": "local",
+          "rationale": "Sensitive context stays local; the model satisfies the required capabilities and resource budget.",
+          "alternatives": [],
+          "rejected": {
+            "demo-cloud": [
+              "Remote processing is not permitted"
+            ]
+          },
+          "estimates_only": true,
+          "policy_evaluation": {
+            "eligible": [
+              "demo-local"
+            ],
+            "rejected": {
+              "demo-cloud": [
+                "Remote processing is not permitted"
+              ]
+            },
+            "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+            "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+          }
+        },
+        "mode": "learning",
+        "provenance": "Hypothetical resource/model profiles",
+        "privacy": "On-device only"
+      },
+      "document": {
+        "summary": [
+          {
+            "text": "I'll update the project brief by Tuesday.",
+            "source_ids": [
+              "s1"
+            ],
+            "evidence_quote": "I'll update the project brief by Tuesday."
+          },
+          {
+            "text": "I'll check the budget by Thursday.",
+            "source_ids": [
+              "s2"
+            ],
+            "evidence_quote": "I'll check the budget by Thursday."
+          },
+          {
+            "text": "We decided to keep the first release small.",
+            "source_ids": [
+              "s3"
+            ],
+            "evidence_quote": "We decided to keep the first release small."
+          }
+        ],
+        "actions": [
+          {
+            "text": "Update the project brief",
+            "source_ids": [
+              "s1"
+            ],
+            "evidence_quote": "I'll update the project brief by Tuesday.",
+            "owner": "Noor",
+            "due": "Tuesday"
+          },
+          {
+            "text": "Check the budget",
+            "source_ids": [
+              "s2"
+            ],
+            "evidence_quote": "I'll check the budget by Thursday.",
+            "owner": "Lina",
+            "due": "Thursday"
+          }
+        ],
+        "decisions": [
+          {
+            "text": "We decided to keep the first release small.",
+            "source_ids": [
+              "s3"
+            ],
+            "evidence_quote": "We decided to keep the first release small."
+          }
+        ]
+      },
+      "trace": [
+        {
+          "id": "read",
+          "title": "Read the notes",
+          "explanation": "Accepted 4 numbered contributions. These are the evidence for the output.",
+          "data": {
+            "source_count": 4
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "telemetry",
+          "title": "Observe the conditions",
+          "explanation": "Read the supplied device/network conditions. These inputs are simulated, not readings from your laptop.",
+          "data": {
+            "battery": 65,
+            "cpu": 85,
+            "memory_utilization": 45,
+            "available_memory_gb": 6,
+            "network": "online",
+            "meeting_minutes": null,
+            "focus_mode": false
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "policy",
+          "title": "Check what is allowed",
+          "explanation": "Privacy is checked before placement. Only admitted candidates can receive the notes.",
+          "data": {
+            "eligible": [
+              "demo-local"
+            ],
+            "rejected": {
+              "demo-cloud": [
+                "Remote processing is not permitted"
+              ]
+            },
+            "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+            "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "scheduler",
+          "title": "Choose where and when",
+          "explanation": "The queue selected this interactive meeting request for its next work turn. Sensitive context stays local; the model satisfies the required capabilities and resource budget.",
+          "data": {
+            "selected": "demo-local",
+            "backend": "local",
+            "rationale": "Sensitive context stays local; the model satisfies the required capabilities and resource budget.",
+            "alternatives": [],
+            "rejected": {
+              "demo-cloud": [
+                "Remote processing is not permitted"
+              ]
+            },
+            "estimates_only": true,
+            "policy_evaluation": {
+              "eligible": [
+                "demo-local"
+              ],
+              "rejected": {
+                "demo-cloud": [
+                  "Remote processing is not permitted"
+                ]
+              },
+              "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+              "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+            }
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "execution",
+          "title": "Produce the draft",
+          "explanation": "Text rules extracted source passages and explicit commitments; no AI model or cloud request was used.",
+          "data": {
+            "actual_backend": "demo-local",
+            "execution_kind": "extractive_learning_rules",
+            "attempts": [
+              {
+                "provider": "demo-local",
+                "attempt": 1,
+                "status": "accepted",
+                "duration_ms": 0.0427
+              }
+            ]
+          },
+          "duration_ms": 0.0447
+        },
+        {
+          "id": "validation",
+          "title": "Verify source references",
+          "explanation": "Checked output structure, source IDs and exact evidence quotes. Owners/deadlines must appear in the sources. These checks do not prove every AI paraphrase is correct.",
+          "data": {
+            "key_points": 3,
+            "actions": 2,
+            "decisions": 1
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "outcomes",
+          "title": "Record the outcome",
+          "explanation": "Measured Python execution time and retained this run in the bounded workspace. No hardware energy, GPU or NPU metric is claimed.",
+          "data": {
+            "elapsed_ms": 0.0983,
+            "state": "complete",
+            "sensitive_prompts_in_trace": false
+          },
+          "duration_ms": null
+        }
+      ],
+      "actual_backend": "demo-local",
+      "execution_kind": "extractive_learning_rules",
+      "error": null,
+      "attempts": [
+        {
+          "provider": "demo-local",
+          "attempt": 1,
+          "status": "accepted",
+          "duration_ms": 0.0427
+        }
+      ],
+      "elapsed_ms": 0.0983,
+      "note": "No email, task-system update, or notification is sent. This output is for review.",
+      "queue": {
+        "items": [
+          {
+            "id": "472913cb-4363-4832-9105-cb55df4df0e7",
+            "kind": "background",
+            "label": "Organize reference notes",
+            "priority": 10,
+            "total": 4,
+            "done": 1,
+            "waited": 1,
+            "status": "paused"
+          },
+          {
+            "id": "7c561ea6-ea6f-4513-9b07-0057c6044837",
+            "kind": "meeting",
+            "label": "Summarize this meeting",
+            "priority": 0,
+            "total": 1,
+            "done": 1,
+            "waited": 0,
+            "status": "complete"
+          }
+        ],
+        "next_order": [
+          "472913cb-4363-4832-9105-cb55df4df0e7"
+        ],
+        "events": [
+          "Added Organize reference notes to the work queue.",
+          "Indexed reference chunk 1/4; 9 distinct words indexed.",
+          "Added Summarize this meeting to the work queue.",
+          "Meeting request takes priority. Background indexing yields at a chunk boundary.",
+          "Meeting request finished: complete."
+        ],
+        "indexed_words": 9,
+        "scope": "One Python worker, cooperative chunks, turn-based aging; no hardware preemption or deadline guarantee"
+      },
+      "source": "recorded_python_execution",
+      "sample_id": "week",
+      "experiment_id": "busy"
+    },
+    "week:fallback": {
+      "trace_id": "7172232b-4777-41c7-b6c5-43fbd11ae702",
+      "state": "complete",
+      "sentences": [
+        {
+          "id": "s1",
+          "speaker": "Noor",
+          "text": "I'll update the project brief by Tuesday."
+        },
+        {
+          "id": "s2",
+          "speaker": "Lina",
+          "text": "I'll check the budget by Thursday."
+        },
+        {
+          "id": "s3",
+          "speaker": "Team",
+          "text": "We decided to keep the first release small."
+        },
+        {
+          "id": "s4",
+          "speaker": "Noor",
+          "text": "The release will include search and a reading list."
+        }
+      ],
+      "options": {
+        "mode": "learning",
+        "private": false,
+        "network": "online",
+        "local_available": true,
+        "cloud_available": true,
+        "busy": false,
+        "failure": "timeout"
+      },
+      "plan": {
+        "telemetry": {
+          "battery": 65,
+          "cpu": 30,
+          "memory_utilization": 45,
+          "available_memory_gb": 8,
+          "network": "online",
+          "meeting_minutes": null,
+          "focus_mode": false
+        },
+        "policy": {
+          "eligible": [
+            "demo-local",
+            "demo-cloud"
+          ],
+          "rejected": {},
+          "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+          "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+        },
+        "placement": {
+          "selected": "demo-local",
+          "backend": "local",
+          "rationale": "Local inference is feasible; keeping context on-device avoids remote processing.",
+          "alternatives": [
+            "demo-cloud"
+          ],
+          "rejected": {},
+          "estimates_only": true,
+          "policy_evaluation": {
+            "eligible": [
+              "demo-local",
+              "demo-cloud"
+            ],
+            "rejected": {},
+            "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+            "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+          }
+        },
+        "mode": "learning",
+        "provenance": "Hypothetical resource/model profiles",
+        "privacy": "Cloud processing explicitly permitted"
+      },
+      "document": {
+        "summary": [
+          {
+            "text": "I'll update the project brief by Tuesday.",
+            "source_ids": [
+              "s1"
+            ],
+            "evidence_quote": "I'll update the project brief by Tuesday."
+          },
+          {
+            "text": "I'll check the budget by Thursday.",
+            "source_ids": [
+              "s2"
+            ],
+            "evidence_quote": "I'll check the budget by Thursday."
+          },
+          {
+            "text": "We decided to keep the first release small.",
+            "source_ids": [
+              "s3"
+            ],
+            "evidence_quote": "We decided to keep the first release small."
+          }
+        ],
+        "actions": [
+          {
+            "text": "Update the project brief",
+            "source_ids": [
+              "s1"
+            ],
+            "evidence_quote": "I'll update the project brief by Tuesday.",
+            "owner": "Noor",
+            "due": "Tuesday"
+          },
+          {
+            "text": "Check the budget",
+            "source_ids": [
+              "s2"
+            ],
+            "evidence_quote": "I'll check the budget by Thursday.",
+            "owner": "Lina",
+            "due": "Thursday"
+          }
+        ],
+        "decisions": [
+          {
+            "text": "We decided to keep the first release small.",
+            "source_ids": [
+              "s3"
+            ],
+            "evidence_quote": "We decided to keep the first release small."
+          }
+        ]
+      },
+      "trace": [
+        {
+          "id": "read",
+          "title": "Read the notes",
+          "explanation": "Accepted 4 numbered contributions. These are the evidence for the output.",
+          "data": {
+            "source_count": 4
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "telemetry",
+          "title": "Observe the conditions",
+          "explanation": "Read the supplied device/network conditions. These inputs are simulated, not readings from your laptop.",
+          "data": {
+            "battery": 65,
+            "cpu": 30,
+            "memory_utilization": 45,
+            "available_memory_gb": 8,
+            "network": "online",
+            "meeting_minutes": null,
+            "focus_mode": false
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "policy",
+          "title": "Check what is allowed",
+          "explanation": "Privacy is checked before placement. Only admitted candidates can receive the notes.",
+          "data": {
+            "eligible": [
+              "demo-local",
+              "demo-cloud"
+            ],
+            "rejected": {},
+            "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+            "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "scheduler",
+          "title": "Choose where and when",
+          "explanation": "The queue selected this interactive meeting request for its next work turn. Local inference is feasible; keeping context on-device avoids remote processing.",
+          "data": {
+            "selected": "demo-local",
+            "backend": "local",
+            "rationale": "Local inference is feasible; keeping context on-device avoids remote processing.",
+            "alternatives": [
+              "demo-cloud"
+            ],
+            "rejected": {},
+            "estimates_only": true,
+            "policy_evaluation": {
+              "eligible": [
+                "demo-local",
+                "demo-cloud"
+              ],
+              "rejected": {},
+              "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+              "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+            }
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "execution",
+          "title": "Produce the draft",
+          "explanation": "Text rules extracted source passages and explicit commitments; no AI model or cloud request was used.",
+          "data": {
+            "actual_backend": "demo-cloud",
+            "execution_kind": "extractive_learning_rules",
+            "attempts": [
+              {
+                "provider": "demo-local",
+                "attempt": 1,
+                "status": "timeout",
+                "duration_ms": 0.002
+              },
+              {
+                "provider": "demo-local",
+                "attempt": 2,
+                "status": "timeout",
+                "duration_ms": 0.0068
+              },
+              {
+                "provider": "demo-cloud",
+                "attempt": 1,
+                "status": "accepted",
+                "duration_ms": 0.1007
+              }
+            ]
+          },
+          "duration_ms": 0.1055
+        },
+        {
+          "id": "validation",
+          "title": "Verify source references",
+          "explanation": "Checked output structure, source IDs and exact evidence quotes. Owners/deadlines must appear in the sources. These checks do not prove every AI paraphrase is correct.",
+          "data": {
+            "key_points": 3,
+            "actions": 2,
+            "decisions": 1
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "outcomes",
+          "title": "Record the outcome",
+          "explanation": "Measured Python execution time and retained this run in the bounded workspace. No hardware energy, GPU or NPU metric is claimed.",
+          "data": {
+            "elapsed_ms": 23.9523,
+            "state": "complete",
+            "sensitive_prompts_in_trace": false
+          },
+          "duration_ms": null
+        }
+      ],
+      "actual_backend": "demo-cloud",
+      "execution_kind": "extractive_learning_rules",
+      "error": null,
+      "attempts": [
+        {
+          "provider": "demo-local",
+          "attempt": 1,
+          "status": "timeout",
+          "duration_ms": 0.002
+        },
+        {
+          "provider": "demo-local",
+          "attempt": 2,
+          "status": "timeout",
+          "duration_ms": 0.0068
+        },
+        {
+          "provider": "demo-cloud",
+          "attempt": 1,
+          "status": "accepted",
+          "duration_ms": 0.1007
+        }
+      ],
+      "elapsed_ms": 23.9523,
+      "note": "No email, task-system update, or notification is sent. This output is for review.",
+      "queue": {
+        "items": [
+          {
+            "id": "69c290dd-6480-4151-b39b-da64f583aacd",
+            "kind": "meeting",
+            "label": "Summarize this meeting",
+            "priority": 0,
+            "total": 1,
+            "done": 1,
+            "waited": 0,
+            "status": "complete"
+          }
+        ],
+        "next_order": [],
+        "events": [
+          "Added Summarize this meeting to the work queue.",
+          "Meeting request finished: complete."
+        ],
+        "indexed_words": 0,
+        "scope": "One Python worker, cooperative chunks, turn-based aging; no hardware preemption or deadline guarantee"
+      },
+      "source": "recorded_python_execution",
+      "sample_id": "week",
+      "experiment_id": "fallback"
+    },
+    "uncertain:baseline": {
+      "trace_id": "0d19f686-7db3-4ce3-9534-8124d59f8698",
+      "state": "complete",
+      "sentences": [
+        {
+          "id": "s1",
+          "speaker": "Ari",
+          "text": "I'll prepare the comparison."
+        },
+        {
+          "id": "s2",
+          "speaker": "Jo",
+          "text": "We should explore a second design before deciding."
+        },
+        {
+          "id": "s3",
+          "speaker": "Team",
+          "text": "We agreed to keep both options open."
+        },
+        {
+          "id": "s4",
+          "speaker": "Ari",
+          "text": "The comparison needs feedback from two reviewers."
+        }
+      ],
+      "options": {
+        "mode": "learning",
+        "private": true,
+        "network": "online",
+        "local_available": true,
+        "cloud_available": true,
+        "busy": false,
+        "failure": "none"
+      },
+      "plan": {
+        "telemetry": {
+          "battery": 65,
+          "cpu": 30,
+          "memory_utilization": 45,
+          "available_memory_gb": 8,
+          "network": "online",
+          "meeting_minutes": null,
+          "focus_mode": false
+        },
+        "policy": {
+          "eligible": [
+            "demo-local"
+          ],
+          "rejected": {
+            "demo-cloud": [
+              "Remote processing is not permitted"
+            ]
+          },
+          "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+          "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+        },
+        "placement": {
+          "selected": "demo-local",
+          "backend": "local",
+          "rationale": "Sensitive context stays local; the model satisfies the required capabilities and resource budget.",
+          "alternatives": [],
+          "rejected": {
+            "demo-cloud": [
+              "Remote processing is not permitted"
+            ]
+          },
+          "estimates_only": true,
+          "policy_evaluation": {
+            "eligible": [
+              "demo-local"
+            ],
+            "rejected": {
+              "demo-cloud": [
+                "Remote processing is not permitted"
+              ]
+            },
+            "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+            "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+          }
+        },
+        "mode": "learning",
+        "provenance": "Hypothetical resource/model profiles",
+        "privacy": "On-device only"
+      },
+      "document": {
+        "summary": [
+          {
+            "text": "I'll prepare the comparison.",
+            "source_ids": [
+              "s1"
+            ],
+            "evidence_quote": "I'll prepare the comparison."
+          },
+          {
+            "text": "We should explore a second design before deciding.",
+            "source_ids": [
+              "s2"
+            ],
+            "evidence_quote": "We should explore a second design before deciding."
+          },
+          {
+            "text": "We agreed to keep both options open.",
+            "source_ids": [
+              "s3"
+            ],
+            "evidence_quote": "We agreed to keep both options open."
+          }
+        ],
+        "actions": [
+          {
+            "text": "Prepare the comparison",
+            "source_ids": [
+              "s1"
+            ],
+            "evidence_quote": "I'll prepare the comparison.",
+            "owner": "Ari",
+            "due": null
+          }
+        ],
+        "decisions": [
+          {
+            "text": "We agreed to keep both options open.",
+            "source_ids": [
+              "s3"
+            ],
+            "evidence_quote": "We agreed to keep both options open."
+          }
+        ]
+      },
+      "trace": [
+        {
+          "id": "read",
+          "title": "Read the notes",
+          "explanation": "Accepted 4 numbered contributions. These are the evidence for the output.",
+          "data": {
+            "source_count": 4
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "telemetry",
+          "title": "Observe the conditions",
+          "explanation": "Read the supplied device/network conditions. These inputs are simulated, not readings from your laptop.",
+          "data": {
+            "battery": 65,
+            "cpu": 30,
+            "memory_utilization": 45,
+            "available_memory_gb": 8,
+            "network": "online",
+            "meeting_minutes": null,
+            "focus_mode": false
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "policy",
+          "title": "Check what is allowed",
+          "explanation": "Privacy is checked before placement. Only admitted candidates can receive the notes.",
+          "data": {
+            "eligible": [
+              "demo-local"
+            ],
+            "rejected": {
+              "demo-cloud": [
+                "Remote processing is not permitted"
+              ]
+            },
+            "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+            "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "scheduler",
+          "title": "Choose where and when",
+          "explanation": "The queue selected this interactive meeting request for its next work turn. Sensitive context stays local; the model satisfies the required capabilities and resource budget.",
+          "data": {
+            "selected": "demo-local",
+            "backend": "local",
+            "rationale": "Sensitive context stays local; the model satisfies the required capabilities and resource budget.",
+            "alternatives": [],
+            "rejected": {
+              "demo-cloud": [
+                "Remote processing is not permitted"
+              ]
+            },
+            "estimates_only": true,
+            "policy_evaluation": {
+              "eligible": [
+                "demo-local"
+              ],
+              "rejected": {
+                "demo-cloud": [
+                  "Remote processing is not permitted"
+                ]
+              },
+              "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+              "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+            }
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "execution",
+          "title": "Produce the draft",
+          "explanation": "Text rules extracted source passages and explicit commitments; no AI model or cloud request was used.",
+          "data": {
+            "actual_backend": "demo-local",
+            "execution_kind": "extractive_learning_rules",
+            "attempts": [
+              {
+                "provider": "demo-local",
+                "attempt": 1,
+                "status": "accepted",
+                "duration_ms": 0.1553
+              }
+            ]
+          },
+          "duration_ms": 0.1585
+        },
+        {
+          "id": "validation",
+          "title": "Verify source references",
+          "explanation": "Checked output structure, source IDs and exact evidence quotes. Owners/deadlines must appear in the sources. These checks do not prove every AI paraphrase is correct.",
+          "data": {
+            "key_points": 3,
+            "actions": 1,
+            "decisions": 1
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "outcomes",
+          "title": "Record the outcome",
+          "explanation": "Measured Python execution time and retained this run in the bounded workspace. No hardware energy, GPU or NPU metric is claimed.",
+          "data": {
+            "elapsed_ms": 0.25,
+            "state": "complete",
+            "sensitive_prompts_in_trace": false
+          },
+          "duration_ms": null
+        }
+      ],
+      "actual_backend": "demo-local",
+      "execution_kind": "extractive_learning_rules",
+      "error": null,
+      "attempts": [
+        {
+          "provider": "demo-local",
+          "attempt": 1,
+          "status": "accepted",
+          "duration_ms": 0.1553
+        }
+      ],
+      "elapsed_ms": 0.25,
+      "note": "No email, task-system update, or notification is sent. This output is for review.",
+      "queue": {
+        "items": [
+          {
+            "id": "558ee695-8e90-4f7c-9b1e-bb0d414aa691",
+            "kind": "meeting",
+            "label": "Summarize this meeting",
+            "priority": 0,
+            "total": 1,
+            "done": 1,
+            "waited": 0,
+            "status": "complete"
+          }
+        ],
+        "next_order": [],
+        "events": [
+          "Added Summarize this meeting to the work queue.",
+          "Meeting request finished: complete."
+        ],
+        "indexed_words": 0,
+        "scope": "One Python worker, cooperative chunks, turn-based aging; no hardware preemption or deadline guarantee"
+      },
+      "source": "recorded_python_execution",
+      "sample_id": "uncertain",
+      "experiment_id": "baseline"
+    },
+    "uncertain:cloud": {
+      "trace_id": "ac326048-11a3-409e-bca1-dbb78fb69480",
+      "state": "complete",
+      "sentences": [
+        {
+          "id": "s1",
+          "speaker": "Ari",
+          "text": "I'll prepare the comparison."
+        },
+        {
+          "id": "s2",
+          "speaker": "Jo",
+          "text": "We should explore a second design before deciding."
+        },
+        {
+          "id": "s3",
+          "speaker": "Team",
+          "text": "We agreed to keep both options open."
+        },
+        {
+          "id": "s4",
+          "speaker": "Ari",
+          "text": "The comparison needs feedback from two reviewers."
+        }
+      ],
+      "options": {
+        "mode": "learning",
+        "private": false,
+        "network": "online",
+        "local_available": false,
+        "cloud_available": true,
+        "busy": false,
+        "failure": "none"
+      },
+      "plan": {
+        "telemetry": {
+          "battery": 65,
+          "cpu": 30,
+          "memory_utilization": 45,
+          "available_memory_gb": 8,
+          "network": "online",
+          "meeting_minutes": null,
+          "focus_mode": false
+        },
+        "policy": {
+          "eligible": [
+            "demo-cloud"
+          ],
+          "rejected": {
+            "demo-local": [
+              "Backend is unavailable"
+            ]
+          },
+          "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+          "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+        },
+        "placement": {
+          "selected": "demo-cloud",
+          "backend": "cloud",
+          "rationale": "Cloud is permitted and feasible; the local option is not eligible.",
+          "alternatives": [],
+          "rejected": {
+            "demo-local": [
+              "Backend is unavailable"
+            ]
+          },
+          "estimates_only": true,
+          "policy_evaluation": {
+            "eligible": [
+              "demo-cloud"
+            ],
+            "rejected": {
+              "demo-local": [
+                "Backend is unavailable"
+              ]
+            },
+            "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+            "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+          }
+        },
+        "mode": "learning",
+        "provenance": "Hypothetical resource/model profiles",
+        "privacy": "Cloud processing explicitly permitted"
+      },
+      "document": {
+        "summary": [
+          {
+            "text": "I'll prepare the comparison.",
+            "source_ids": [
+              "s1"
+            ],
+            "evidence_quote": "I'll prepare the comparison."
+          },
+          {
+            "text": "We should explore a second design before deciding.",
+            "source_ids": [
+              "s2"
+            ],
+            "evidence_quote": "We should explore a second design before deciding."
+          },
+          {
+            "text": "We agreed to keep both options open.",
+            "source_ids": [
+              "s3"
+            ],
+            "evidence_quote": "We agreed to keep both options open."
+          }
+        ],
+        "actions": [
+          {
+            "text": "Prepare the comparison",
+            "source_ids": [
+              "s1"
+            ],
+            "evidence_quote": "I'll prepare the comparison.",
+            "owner": "Ari",
+            "due": null
+          }
+        ],
+        "decisions": [
+          {
+            "text": "We agreed to keep both options open.",
+            "source_ids": [
+              "s3"
+            ],
+            "evidence_quote": "We agreed to keep both options open."
+          }
+        ]
+      },
+      "trace": [
+        {
+          "id": "read",
+          "title": "Read the notes",
+          "explanation": "Accepted 4 numbered contributions. These are the evidence for the output.",
+          "data": {
+            "source_count": 4
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "telemetry",
+          "title": "Observe the conditions",
+          "explanation": "Read the supplied device/network conditions. These inputs are simulated, not readings from your laptop.",
+          "data": {
+            "battery": 65,
+            "cpu": 30,
+            "memory_utilization": 45,
+            "available_memory_gb": 8,
+            "network": "online",
+            "meeting_minutes": null,
+            "focus_mode": false
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "policy",
+          "title": "Check what is allowed",
+          "explanation": "Privacy is checked before placement. Only admitted candidates can receive the notes.",
+          "data": {
+            "eligible": [
+              "demo-cloud"
+            ],
+            "rejected": {
+              "demo-local": [
+                "Backend is unavailable"
+              ]
+            },
+            "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+            "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "scheduler",
+          "title": "Choose where and when",
+          "explanation": "The queue selected this interactive meeting request for its next work turn. Cloud is permitted and feasible; the local option is not eligible.",
+          "data": {
+            "selected": "demo-cloud",
+            "backend": "cloud",
+            "rationale": "Cloud is permitted and feasible; the local option is not eligible.",
+            "alternatives": [],
+            "rejected": {
+              "demo-local": [
+                "Backend is unavailable"
+              ]
+            },
+            "estimates_only": true,
+            "policy_evaluation": {
+              "eligible": [
+                "demo-cloud"
+              ],
+              "rejected": {
+                "demo-local": [
+                  "Backend is unavailable"
+                ]
+              },
+              "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+              "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+            }
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "execution",
+          "title": "Produce the draft",
+          "explanation": "Text rules extracted source passages and explicit commitments; no AI model or cloud request was used.",
+          "data": {
+            "actual_backend": "demo-cloud",
+            "execution_kind": "extractive_learning_rules",
+            "attempts": [
+              {
+                "provider": "demo-cloud",
+                "attempt": 1,
+                "status": "accepted",
+                "duration_ms": 0.0714
+              }
+            ]
+          },
+          "duration_ms": 0.077
+        },
+        {
+          "id": "validation",
+          "title": "Verify source references",
+          "explanation": "Checked output structure, source IDs and exact evidence quotes. Owners/deadlines must appear in the sources. These checks do not prove every AI paraphrase is correct.",
+          "data": {
+            "key_points": 3,
+            "actions": 1,
+            "decisions": 1
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "outcomes",
+          "title": "Record the outcome",
+          "explanation": "Measured Python execution time and retained this run in the bounded workspace. No hardware energy, GPU or NPU metric is claimed.",
+          "data": {
+            "elapsed_ms": 0.2147,
+            "state": "complete",
+            "sensitive_prompts_in_trace": false
+          },
+          "duration_ms": null
+        }
+      ],
+      "actual_backend": "demo-cloud",
+      "execution_kind": "extractive_learning_rules",
+      "error": null,
+      "attempts": [
+        {
+          "provider": "demo-cloud",
+          "attempt": 1,
+          "status": "accepted",
+          "duration_ms": 0.0714
+        }
+      ],
+      "elapsed_ms": 0.2147,
+      "note": "No email, task-system update, or notification is sent. This output is for review.",
+      "queue": {
+        "items": [
+          {
+            "id": "dbc2de5a-705f-40d3-8d70-08d67044f565",
+            "kind": "meeting",
+            "label": "Summarize this meeting",
+            "priority": 0,
+            "total": 1,
+            "done": 1,
+            "waited": 0,
+            "status": "complete"
+          }
+        ],
+        "next_order": [],
+        "events": [
+          "Added Summarize this meeting to the work queue.",
+          "Meeting request finished: complete."
+        ],
+        "indexed_words": 0,
+        "scope": "One Python worker, cooperative chunks, turn-based aging; no hardware preemption or deadline guarantee"
+      },
+      "source": "recorded_python_execution",
+      "sample_id": "uncertain",
+      "experiment_id": "cloud"
+    },
+    "uncertain:offline": {
+      "trace_id": "1861ee31-5b14-40e6-98e5-84510c6947a7",
+      "state": "complete",
+      "sentences": [
+        {
+          "id": "s1",
+          "speaker": "Ari",
+          "text": "I'll prepare the comparison."
+        },
+        {
+          "id": "s2",
+          "speaker": "Jo",
+          "text": "We should explore a second design before deciding."
+        },
+        {
+          "id": "s3",
+          "speaker": "Team",
+          "text": "We agreed to keep both options open."
+        },
+        {
+          "id": "s4",
+          "speaker": "Ari",
+          "text": "The comparison needs feedback from two reviewers."
+        }
+      ],
+      "options": {
+        "mode": "learning",
+        "private": true,
+        "network": "offline",
+        "local_available": true,
+        "cloud_available": true,
+        "busy": false,
+        "failure": "none"
+      },
+      "plan": {
+        "telemetry": {
+          "battery": 65,
+          "cpu": 30,
+          "memory_utilization": 45,
+          "available_memory_gb": 8,
+          "network": "offline",
+          "meeting_minutes": null,
+          "focus_mode": false
+        },
+        "policy": {
+          "eligible": [
+            "demo-local"
+          ],
+          "rejected": {
+            "demo-cloud": [
+              "Remote processing is not permitted",
+              "Network is unavailable"
+            ]
+          },
+          "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+          "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+        },
+        "placement": {
+          "selected": "demo-local",
+          "backend": "local",
+          "rationale": "Sensitive context stays local; the model satisfies the required capabilities and resource budget.",
+          "alternatives": [],
+          "rejected": {
+            "demo-cloud": [
+              "Remote processing is not permitted",
+              "Network is unavailable"
+            ]
+          },
+          "estimates_only": true,
+          "policy_evaluation": {
+            "eligible": [
+              "demo-local"
+            ],
+            "rejected": {
+              "demo-cloud": [
+                "Remote processing is not permitted",
+                "Network is unavailable"
+              ]
+            },
+            "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+            "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+          }
+        },
+        "mode": "learning",
+        "provenance": "Hypothetical resource/model profiles",
+        "privacy": "On-device only"
+      },
+      "document": {
+        "summary": [
+          {
+            "text": "I'll prepare the comparison.",
+            "source_ids": [
+              "s1"
+            ],
+            "evidence_quote": "I'll prepare the comparison."
+          },
+          {
+            "text": "We should explore a second design before deciding.",
+            "source_ids": [
+              "s2"
+            ],
+            "evidence_quote": "We should explore a second design before deciding."
+          },
+          {
+            "text": "We agreed to keep both options open.",
+            "source_ids": [
+              "s3"
+            ],
+            "evidence_quote": "We agreed to keep both options open."
+          }
+        ],
+        "actions": [
+          {
+            "text": "Prepare the comparison",
+            "source_ids": [
+              "s1"
+            ],
+            "evidence_quote": "I'll prepare the comparison.",
+            "owner": "Ari",
+            "due": null
+          }
+        ],
+        "decisions": [
+          {
+            "text": "We agreed to keep both options open.",
+            "source_ids": [
+              "s3"
+            ],
+            "evidence_quote": "We agreed to keep both options open."
+          }
+        ]
+      },
+      "trace": [
+        {
+          "id": "read",
+          "title": "Read the notes",
+          "explanation": "Accepted 4 numbered contributions. These are the evidence for the output.",
+          "data": {
+            "source_count": 4
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "telemetry",
+          "title": "Observe the conditions",
+          "explanation": "Read the supplied device/network conditions. These inputs are simulated, not readings from your laptop.",
+          "data": {
+            "battery": 65,
+            "cpu": 30,
+            "memory_utilization": 45,
+            "available_memory_gb": 8,
+            "network": "offline",
+            "meeting_minutes": null,
+            "focus_mode": false
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "policy",
+          "title": "Check what is allowed",
+          "explanation": "Privacy is checked before placement. Only admitted candidates can receive the notes.",
+          "data": {
+            "eligible": [
+              "demo-local"
+            ],
+            "rejected": {
+              "demo-cloud": [
+                "Remote processing is not permitted",
+                "Network is unavailable"
+              ]
+            },
+            "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+            "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "scheduler",
+          "title": "Choose where and when",
+          "explanation": "The queue selected this interactive meeting request for its next work turn. Sensitive context stays local; the model satisfies the required capabilities and resource budget.",
+          "data": {
+            "selected": "demo-local",
+            "backend": "local",
+            "rationale": "Sensitive context stays local; the model satisfies the required capabilities and resource budget.",
+            "alternatives": [],
+            "rejected": {
+              "demo-cloud": [
+                "Remote processing is not permitted",
+                "Network is unavailable"
+              ]
+            },
+            "estimates_only": true,
+            "policy_evaluation": {
+              "eligible": [
+                "demo-local"
+              ],
+              "rejected": {
+                "demo-cloud": [
+                  "Remote processing is not permitted",
+                  "Network is unavailable"
+                ]
+              },
+              "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+              "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+            }
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "execution",
+          "title": "Produce the draft",
+          "explanation": "Text rules extracted source passages and explicit commitments; no AI model or cloud request was used.",
+          "data": {
+            "actual_backend": "demo-local",
+            "execution_kind": "extractive_learning_rules",
+            "attempts": [
+              {
+                "provider": "demo-local",
+                "attempt": 1,
+                "status": "accepted",
+                "duration_ms": 0.0635
+              }
+            ]
+          },
+          "duration_ms": 0.0679
+        },
+        {
+          "id": "validation",
+          "title": "Verify source references",
+          "explanation": "Checked output structure, source IDs and exact evidence quotes. Owners/deadlines must appear in the sources. These checks do not prove every AI paraphrase is correct.",
+          "data": {
+            "key_points": 3,
+            "actions": 1,
+            "decisions": 1
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "outcomes",
+          "title": "Record the outcome",
+          "explanation": "Measured Python execution time and retained this run in the bounded workspace. No hardware energy, GPU or NPU metric is claimed.",
+          "data": {
+            "elapsed_ms": 0.1948,
+            "state": "complete",
+            "sensitive_prompts_in_trace": false
+          },
+          "duration_ms": null
+        }
+      ],
+      "actual_backend": "demo-local",
+      "execution_kind": "extractive_learning_rules",
+      "error": null,
+      "attempts": [
+        {
+          "provider": "demo-local",
+          "attempt": 1,
+          "status": "accepted",
+          "duration_ms": 0.0635
+        }
+      ],
+      "elapsed_ms": 0.1948,
+      "note": "No email, task-system update, or notification is sent. This output is for review.",
+      "queue": {
+        "items": [
+          {
+            "id": "d997157d-6ca5-4be2-899f-a55fd472d334",
+            "kind": "meeting",
+            "label": "Summarize this meeting",
+            "priority": 0,
+            "total": 1,
+            "done": 1,
+            "waited": 0,
+            "status": "complete"
+          }
+        ],
+        "next_order": [],
+        "events": [
+          "Added Summarize this meeting to the work queue.",
+          "Meeting request finished: complete."
+        ],
+        "indexed_words": 0,
+        "scope": "One Python worker, cooperative chunks, turn-based aging; no hardware preemption or deadline guarantee"
+      },
+      "source": "recorded_python_execution",
+      "sample_id": "uncertain",
+      "experiment_id": "offline"
+    },
+    "uncertain:blocked": {
+      "trace_id": "adb93c05-cde8-4247-ba4d-39682765f762",
+      "state": "blocked",
+      "sentences": [
+        {
+          "id": "s1",
+          "speaker": "Ari",
+          "text": "I'll prepare the comparison."
+        },
+        {
+          "id": "s2",
+          "speaker": "Jo",
+          "text": "We should explore a second design before deciding."
+        },
+        {
+          "id": "s3",
+          "speaker": "Team",
+          "text": "We agreed to keep both options open."
+        },
+        {
+          "id": "s4",
+          "speaker": "Ari",
+          "text": "The comparison needs feedback from two reviewers."
+        }
+      ],
+      "options": {
+        "mode": "learning",
+        "private": true,
+        "network": "online",
+        "local_available": false,
+        "cloud_available": true,
+        "busy": false,
+        "failure": "none"
+      },
+      "plan": {
+        "telemetry": {
+          "battery": 65,
+          "cpu": 30,
+          "memory_utilization": 45,
+          "available_memory_gb": 8,
+          "network": "online",
+          "meeting_minutes": null,
+          "focus_mode": false
+        },
+        "policy": {
+          "eligible": [],
+          "rejected": {
+            "demo-local": [
+              "Backend is unavailable"
+            ],
+            "demo-cloud": [
+              "Remote processing is not permitted"
+            ]
+          },
+          "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+          "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+        },
+        "placement": {
+          "selected": null,
+          "backend": null,
+          "rationale": "No backend satisfies privacy, capability, and resource constraints.",
+          "alternatives": [],
+          "rejected": {
+            "demo-local": [
+              "Backend is unavailable"
+            ],
+            "demo-cloud": [
+              "Remote processing is not permitted"
+            ]
+          },
+          "estimates_only": true,
+          "policy_evaluation": {
+            "eligible": [],
+            "rejected": {
+              "demo-local": [
+                "Backend is unavailable"
+              ],
+              "demo-cloud": [
+                "Remote processing is not permitted"
+              ]
+            },
+            "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+            "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+          }
+        },
+        "mode": "learning",
+        "provenance": "Hypothetical resource/model profiles",
+        "privacy": "On-device only"
+      },
+      "document": null,
+      "trace": [
+        {
+          "id": "read",
+          "title": "Read the notes",
+          "explanation": "Accepted 4 numbered contributions. These are the evidence for the output.",
+          "data": {
+            "source_count": 4
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "telemetry",
+          "title": "Observe the conditions",
+          "explanation": "Read the supplied device/network conditions. These inputs are simulated, not readings from your laptop.",
+          "data": {
+            "battery": 65,
+            "cpu": 30,
+            "memory_utilization": 45,
+            "available_memory_gb": 8,
+            "network": "online",
+            "meeting_minutes": null,
+            "focus_mode": false
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "policy",
+          "title": "Check what is allowed",
+          "explanation": "Privacy is checked before placement. Only admitted candidates can receive the notes.",
+          "data": {
+            "eligible": [],
+            "rejected": {
+              "demo-local": [
+                "Backend is unavailable"
+              ],
+              "demo-cloud": [
+                "Remote processing is not permitted"
+              ]
+            },
+            "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+            "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "scheduler",
+          "title": "Choose where and when",
+          "explanation": "The queue selected this interactive meeting request for its next work turn. No backend satisfies privacy, capability, and resource constraints.",
+          "data": {
+            "selected": null,
+            "backend": null,
+            "rationale": "No backend satisfies privacy, capability, and resource constraints.",
+            "alternatives": [],
+            "rejected": {
+              "demo-local": [
+                "Backend is unavailable"
+              ],
+              "demo-cloud": [
+                "Remote processing is not permitted"
+              ]
+            },
+            "estimates_only": true,
+            "policy_evaluation": {
+              "eligible": [],
+              "rejected": {
+                "demo-local": [
+                  "Backend is unavailable"
+                ],
+                "demo-cloud": [
+                  "Remote processing is not permitted"
+                ]
+              },
+              "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+              "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+            }
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "outcomes",
+          "title": "Record the outcome",
+          "explanation": "Measured Python execution time and retained this run in the bounded workspace. No hardware energy, GPU or NPU metric is claimed.",
+          "data": {
+            "elapsed_ms": 0.2162,
+            "state": "blocked",
+            "sensitive_prompts_in_trace": false
+          },
+          "duration_ms": null
+        }
+      ],
+      "actual_backend": null,
+      "execution_kind": "not_executed",
+      "error": "No permitted backend. Change availability or wait; privacy is not bypassed.",
+      "attempts": [],
+      "elapsed_ms": 0.2162,
+      "note": "No email, task-system update, or notification is sent. This output is for review.",
+      "queue": {
+        "items": [
+          {
+            "id": "6ac981da-bcbf-4209-b672-8767704661f0",
+            "kind": "meeting",
+            "label": "Summarize this meeting",
+            "priority": 0,
+            "total": 1,
+            "done": 1,
+            "waited": 0,
+            "status": "blocked"
+          }
+        ],
+        "next_order": [],
+        "events": [
+          "Added Summarize this meeting to the work queue.",
+          "Meeting request finished: blocked."
+        ],
+        "indexed_words": 0,
+        "scope": "One Python worker, cooperative chunks, turn-based aging; no hardware preemption or deadline guarantee"
+      },
+      "source": "recorded_python_execution",
+      "sample_id": "uncertain",
+      "experiment_id": "blocked"
+    },
+    "uncertain:busy": {
+      "trace_id": "9210c593-1ed5-4e28-8c8d-fa83f3d6a91c",
+      "state": "complete",
+      "sentences": [
+        {
+          "id": "s1",
+          "speaker": "Ari",
+          "text": "I'll prepare the comparison."
+        },
+        {
+          "id": "s2",
+          "speaker": "Jo",
+          "text": "We should explore a second design before deciding."
+        },
+        {
+          "id": "s3",
+          "speaker": "Team",
+          "text": "We agreed to keep both options open."
+        },
+        {
+          "id": "s4",
+          "speaker": "Ari",
+          "text": "The comparison needs feedback from two reviewers."
+        }
+      ],
+      "options": {
+        "mode": "learning",
+        "private": true,
+        "network": "online",
+        "local_available": true,
+        "cloud_available": true,
+        "busy": true,
+        "failure": "none"
+      },
+      "plan": {
+        "telemetry": {
+          "battery": 65,
+          "cpu": 85,
+          "memory_utilization": 45,
+          "available_memory_gb": 6,
+          "network": "online",
+          "meeting_minutes": null,
+          "focus_mode": false
+        },
+        "policy": {
+          "eligible": [
+            "demo-local"
+          ],
+          "rejected": {
+            "demo-cloud": [
+              "Remote processing is not permitted"
+            ]
+          },
+          "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+          "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+        },
+        "placement": {
+          "selected": "demo-local",
+          "backend": "local",
+          "rationale": "Sensitive context stays local; the model satisfies the required capabilities and resource budget.",
+          "alternatives": [],
+          "rejected": {
+            "demo-cloud": [
+              "Remote processing is not permitted"
+            ]
+          },
+          "estimates_only": true,
+          "policy_evaluation": {
+            "eligible": [
+              "demo-local"
+            ],
+            "rejected": {
+              "demo-cloud": [
+                "Remote processing is not permitted"
+              ]
+            },
+            "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+            "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+          }
+        },
+        "mode": "learning",
+        "provenance": "Hypothetical resource/model profiles",
+        "privacy": "On-device only"
+      },
+      "document": {
+        "summary": [
+          {
+            "text": "I'll prepare the comparison.",
+            "source_ids": [
+              "s1"
+            ],
+            "evidence_quote": "I'll prepare the comparison."
+          },
+          {
+            "text": "We should explore a second design before deciding.",
+            "source_ids": [
+              "s2"
+            ],
+            "evidence_quote": "We should explore a second design before deciding."
+          },
+          {
+            "text": "We agreed to keep both options open.",
+            "source_ids": [
+              "s3"
+            ],
+            "evidence_quote": "We agreed to keep both options open."
+          }
+        ],
+        "actions": [
+          {
+            "text": "Prepare the comparison",
+            "source_ids": [
+              "s1"
+            ],
+            "evidence_quote": "I'll prepare the comparison.",
+            "owner": "Ari",
+            "due": null
+          }
+        ],
+        "decisions": [
+          {
+            "text": "We agreed to keep both options open.",
+            "source_ids": [
+              "s3"
+            ],
+            "evidence_quote": "We agreed to keep both options open."
+          }
+        ]
+      },
+      "trace": [
+        {
+          "id": "read",
+          "title": "Read the notes",
+          "explanation": "Accepted 4 numbered contributions. These are the evidence for the output.",
+          "data": {
+            "source_count": 4
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "telemetry",
+          "title": "Observe the conditions",
+          "explanation": "Read the supplied device/network conditions. These inputs are simulated, not readings from your laptop.",
+          "data": {
+            "battery": 65,
+            "cpu": 85,
+            "memory_utilization": 45,
+            "available_memory_gb": 6,
+            "network": "online",
+            "meeting_minutes": null,
+            "focus_mode": false
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "policy",
+          "title": "Check what is allowed",
+          "explanation": "Privacy is checked before placement. Only admitted candidates can receive the notes.",
+          "data": {
+            "eligible": [
+              "demo-local"
+            ],
+            "rejected": {
+              "demo-cloud": [
+                "Remote processing is not permitted"
+              ]
+            },
+            "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+            "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "scheduler",
+          "title": "Choose where and when",
+          "explanation": "The queue selected this interactive meeting request for its next work turn. Sensitive context stays local; the model satisfies the required capabilities and resource budget.",
+          "data": {
+            "selected": "demo-local",
+            "backend": "local",
+            "rationale": "Sensitive context stays local; the model satisfies the required capabilities and resource budget.",
+            "alternatives": [],
+            "rejected": {
+              "demo-cloud": [
+                "Remote processing is not permitted"
+              ]
+            },
+            "estimates_only": true,
+            "policy_evaluation": {
+              "eligible": [
+                "demo-local"
+              ],
+              "rejected": {
+                "demo-cloud": [
+                  "Remote processing is not permitted"
+                ]
+              },
+              "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+              "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+            }
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "execution",
+          "title": "Produce the draft",
+          "explanation": "Text rules extracted source passages and explicit commitments; no AI model or cloud request was used.",
+          "data": {
+            "actual_backend": "demo-local",
+            "execution_kind": "extractive_learning_rules",
+            "attempts": [
+              {
+                "provider": "demo-local",
+                "attempt": 1,
+                "status": "accepted",
+                "duration_ms": 0.0409
+              }
+            ]
+          },
+          "duration_ms": 0.0438
+        },
+        {
+          "id": "validation",
+          "title": "Verify source references",
+          "explanation": "Checked output structure, source IDs and exact evidence quotes. Owners/deadlines must appear in the sources. These checks do not prove every AI paraphrase is correct.",
+          "data": {
+            "key_points": 3,
+            "actions": 1,
+            "decisions": 1
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "outcomes",
+          "title": "Record the outcome",
+          "explanation": "Measured Python execution time and retained this run in the bounded workspace. No hardware energy, GPU or NPU metric is claimed.",
+          "data": {
+            "elapsed_ms": 0.1073,
+            "state": "complete",
+            "sensitive_prompts_in_trace": false
+          },
+          "duration_ms": null
+        }
+      ],
+      "actual_backend": "demo-local",
+      "execution_kind": "extractive_learning_rules",
+      "error": null,
+      "attempts": [
+        {
+          "provider": "demo-local",
+          "attempt": 1,
+          "status": "accepted",
+          "duration_ms": 0.0409
+        }
+      ],
+      "elapsed_ms": 0.1073,
+      "note": "No email, task-system update, or notification is sent. This output is for review.",
+      "queue": {
+        "items": [
+          {
+            "id": "f3397641-df0d-4d00-b861-dd59bab262be",
+            "kind": "background",
+            "label": "Organize reference notes",
+            "priority": 10,
+            "total": 4,
+            "done": 1,
+            "waited": 1,
+            "status": "paused"
+          },
+          {
+            "id": "0796327e-b30d-461d-8c8c-d164e6da286c",
+            "kind": "meeting",
+            "label": "Summarize this meeting",
+            "priority": 0,
+            "total": 1,
+            "done": 1,
+            "waited": 0,
+            "status": "complete"
+          }
+        ],
+        "next_order": [
+          "f3397641-df0d-4d00-b861-dd59bab262be"
+        ],
+        "events": [
+          "Added Organize reference notes to the work queue.",
+          "Indexed reference chunk 1/4; 9 distinct words indexed.",
+          "Added Summarize this meeting to the work queue.",
+          "Meeting request takes priority. Background indexing yields at a chunk boundary.",
+          "Meeting request finished: complete."
+        ],
+        "indexed_words": 9,
+        "scope": "One Python worker, cooperative chunks, turn-based aging; no hardware preemption or deadline guarantee"
+      },
+      "source": "recorded_python_execution",
+      "sample_id": "uncertain",
+      "experiment_id": "busy"
+    },
+    "uncertain:fallback": {
+      "trace_id": "767f9a31-239d-4743-a337-5284386695a6",
+      "state": "complete",
+      "sentences": [
+        {
+          "id": "s1",
+          "speaker": "Ari",
+          "text": "I'll prepare the comparison."
+        },
+        {
+          "id": "s2",
+          "speaker": "Jo",
+          "text": "We should explore a second design before deciding."
+        },
+        {
+          "id": "s3",
+          "speaker": "Team",
+          "text": "We agreed to keep both options open."
+        },
+        {
+          "id": "s4",
+          "speaker": "Ari",
+          "text": "The comparison needs feedback from two reviewers."
+        }
+      ],
+      "options": {
+        "mode": "learning",
+        "private": false,
+        "network": "online",
+        "local_available": true,
+        "cloud_available": true,
+        "busy": false,
+        "failure": "timeout"
+      },
+      "plan": {
+        "telemetry": {
+          "battery": 65,
+          "cpu": 30,
+          "memory_utilization": 45,
+          "available_memory_gb": 8,
+          "network": "online",
+          "meeting_minutes": null,
+          "focus_mode": false
+        },
+        "policy": {
+          "eligible": [
+            "demo-local",
+            "demo-cloud"
+          ],
+          "rejected": {},
+          "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+          "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+        },
+        "placement": {
+          "selected": "demo-local",
+          "backend": "local",
+          "rationale": "Local inference is feasible; keeping context on-device avoids remote processing.",
+          "alternatives": [
+            "demo-cloud"
+          ],
+          "rejected": {},
+          "estimates_only": true,
+          "policy_evaluation": {
+            "eligible": [
+              "demo-local",
+              "demo-cloud"
+            ],
+            "rejected": {},
+            "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+            "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+          }
+        },
+        "mode": "learning",
+        "provenance": "Hypothetical resource/model profiles",
+        "privacy": "Cloud processing explicitly permitted"
+      },
+      "document": {
+        "summary": [
+          {
+            "text": "I'll prepare the comparison.",
+            "source_ids": [
+              "s1"
+            ],
+            "evidence_quote": "I'll prepare the comparison."
+          },
+          {
+            "text": "We should explore a second design before deciding.",
+            "source_ids": [
+              "s2"
+            ],
+            "evidence_quote": "We should explore a second design before deciding."
+          },
+          {
+            "text": "We agreed to keep both options open.",
+            "source_ids": [
+              "s3"
+            ],
+            "evidence_quote": "We agreed to keep both options open."
+          }
+        ],
+        "actions": [
+          {
+            "text": "Prepare the comparison",
+            "source_ids": [
+              "s1"
+            ],
+            "evidence_quote": "I'll prepare the comparison.",
+            "owner": "Ari",
+            "due": null
+          }
+        ],
+        "decisions": [
+          {
+            "text": "We agreed to keep both options open.",
+            "source_ids": [
+              "s3"
+            ],
+            "evidence_quote": "We agreed to keep both options open."
+          }
+        ]
+      },
+      "trace": [
+        {
+          "id": "read",
+          "title": "Read the notes",
+          "explanation": "Accepted 4 numbered contributions. These are the evidence for the output.",
+          "data": {
+            "source_count": 4
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "telemetry",
+          "title": "Observe the conditions",
+          "explanation": "Read the supplied device/network conditions. These inputs are simulated, not readings from your laptop.",
+          "data": {
+            "battery": 65,
+            "cpu": 30,
+            "memory_utilization": 45,
+            "available_memory_gb": 8,
+            "network": "online",
+            "meeting_minutes": null,
+            "focus_mode": false
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "policy",
+          "title": "Check what is allowed",
+          "explanation": "Privacy is checked before placement. Only admitted candidates can receive the notes.",
+          "data": {
+            "eligible": [
+              "demo-local",
+              "demo-cloud"
+            ],
+            "rejected": {},
+            "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+            "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "scheduler",
+          "title": "Choose where and when",
+          "explanation": "The queue selected this interactive meeting request for its next work turn. Local inference is feasible; keeping context on-device avoids remote processing.",
+          "data": {
+            "selected": "demo-local",
+            "backend": "local",
+            "rationale": "Local inference is feasible; keeping context on-device avoids remote processing.",
+            "alternatives": [
+              "demo-cloud"
+            ],
+            "rejected": {},
+            "estimates_only": true,
+            "policy_evaluation": {
+              "eligible": [
+                "demo-local",
+                "demo-cloud"
+              ],
+              "rejected": {},
+              "order": "privacy and permission, then availability/capability/resource/latency feasibility",
+              "resource_provenance": "Synthetic snapshot and estimated model profiles; not hardware measurements"
+            }
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "execution",
+          "title": "Produce the draft",
+          "explanation": "Text rules extracted source passages and explicit commitments; no AI model or cloud request was used.",
+          "data": {
+            "actual_backend": "demo-cloud",
+            "execution_kind": "extractive_learning_rules",
+            "attempts": [
+              {
+                "provider": "demo-local",
+                "attempt": 1,
+                "status": "timeout",
+                "duration_ms": 0.002
+              },
+              {
+                "provider": "demo-local",
+                "attempt": 2,
+                "status": "timeout",
+                "duration_ms": 0.0065
+              },
+              {
+                "provider": "demo-cloud",
+                "attempt": 1,
+                "status": "accepted",
+                "duration_ms": 0.074
+              }
+            ]
+          },
+          "duration_ms": 0.0785
+        },
+        {
+          "id": "validation",
+          "title": "Verify source references",
+          "explanation": "Checked output structure, source IDs and exact evidence quotes. Owners/deadlines must appear in the sources. These checks do not prove every AI paraphrase is correct.",
+          "data": {
+            "key_points": 3,
+            "actions": 1,
+            "decisions": 1
+          },
+          "duration_ms": null
+        },
+        {
+          "id": "outcomes",
+          "title": "Record the outcome",
+          "explanation": "Measured Python execution time and retained this run in the bounded workspace. No hardware energy, GPU or NPU metric is claimed.",
+          "data": {
+            "elapsed_ms": 22.8635,
+            "state": "complete",
+            "sensitive_prompts_in_trace": false
+          },
+          "duration_ms": null
+        }
+      ],
+      "actual_backend": "demo-cloud",
+      "execution_kind": "extractive_learning_rules",
+      "error": null,
+      "attempts": [
+        {
+          "provider": "demo-local",
+          "attempt": 1,
+          "status": "timeout",
+          "duration_ms": 0.002
+        },
+        {
+          "provider": "demo-local",
+          "attempt": 2,
+          "status": "timeout",
+          "duration_ms": 0.0065
+        },
+        {
+          "provider": "demo-cloud",
+          "attempt": 1,
+          "status": "accepted",
+          "duration_ms": 0.074
+        }
+      ],
+      "elapsed_ms": 22.8635,
+      "note": "No email, task-system update, or notification is sent. This output is for review.",
+      "queue": {
+        "items": [
+          {
+            "id": "b766bd84-6db4-42d8-9cde-4b5ea783961b",
+            "kind": "meeting",
+            "label": "Summarize this meeting",
+            "priority": 0,
+            "total": 1,
+            "done": 1,
+            "waited": 0,
+            "status": "complete"
+          }
+        ],
+        "next_order": [],
+        "events": [
+          "Added Summarize this meeting to the work queue.",
+          "Meeting request finished: complete."
+        ],
+        "indexed_words": 0,
+        "scope": "One Python worker, cooperative chunks, turn-based aging; no hardware preemption or deadline guarantee"
+      },
+      "source": "recorded_python_execution",
+      "sample_id": "uncertain",
+      "experiment_id": "fallback"
+    }
+  }
+}
